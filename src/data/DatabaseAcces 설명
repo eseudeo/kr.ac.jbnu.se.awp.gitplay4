@@ -5,6 +5,7 @@ public boolean setData(String sqlQuery, List values) INSERT,UPDATE,DELETE문
 public List<Map> getData(String sqlQuery) SELECT문 without WHERE
 public List<Map> getData(String sqlQuery, List values) SELECT문 with WHERE
 
+
 getData 메서드는 Map타입이 인덱스인 리스트를 반환한다.
 이때 각 인덱스(Map)은 SELECT문을 통해 나온 row를 의미한다.
 각 row의 Key 이름은 Column 이름이고 ,Value 는 속성값이다.
