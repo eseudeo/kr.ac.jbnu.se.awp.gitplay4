@@ -104,6 +104,4 @@ public class DatabaseAccess {
 				numberOfQm++;
 		return numberOfQm;
 	}
-	private void example() {
-	}
 }

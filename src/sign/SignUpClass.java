@@ -7,6 +7,7 @@ import data.User;
 
 public class SignUpClass {
 	private DatabaseAccess dba;
+	
 	public SignUpClass() {
 		dba = DatabaseAccess.getInstance();
 		

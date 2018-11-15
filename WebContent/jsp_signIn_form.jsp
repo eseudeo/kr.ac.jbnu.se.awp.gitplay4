@@ -8,7 +8,7 @@
 <title>로그인</title>
 </head>
 <body>
-<form name=signIn method=post action=jsp_signIn.jsp>
+<form name=signIn method=post action=jsp_signIn_success.jsp>
 아이디 : <input type=text name=id>
 비밀번호 : <input type=password name=pw>
 <input type=submit value="로그인">
