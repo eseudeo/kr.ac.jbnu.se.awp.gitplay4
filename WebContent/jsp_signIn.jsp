@@ -4,7 +4,7 @@
 <% request.setCharacterEncoding("utf-8"); %>
 <%
 	String redirectCause = "";
-	String redirectUrl = Constants.JSP_SIGNIN_FORM;
+	 String redirectUrl = Constants.JSP_SIGNIN_FORM;
 	String id,password;
 	SignInClass signIn = new SignInClass();
 	id = request.getParameter(Constants.USERINFO_ID);
