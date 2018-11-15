@@ -37,11 +37,9 @@ public class SignInClass {
 		}
 		return false;
 	}
-	
 	public User getCurrentUser() {
 		return currentUser;
 	}
-
 	private boolean isEmpty(String id, String password) {
 		if((id != "") || (password != "")) return false;
 		return true;
