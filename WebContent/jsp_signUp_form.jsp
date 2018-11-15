@@ -20,6 +20,7 @@
 	out.println(returnOptions(1, 12));
 %>
 </select>월
+	
 <select name = selectDay>
 <%
 	out.println(returnOptions(1,31));
