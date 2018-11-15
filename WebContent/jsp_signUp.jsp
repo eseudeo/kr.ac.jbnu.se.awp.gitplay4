@@ -45,6 +45,7 @@
 </body>
 </html>
 <%!
+
 	private boolean checkId(String id) {
 		if(id.length() < 3 || id.length() >= 20) return false;
 		else return true;
