@@ -20,7 +20,7 @@ public class SignUpClass {
 		String result = "";
 		Map now;
 		
-		value.add(userInfo.getId());
+		 value.add(userInfo.getId());
 		
 		values.add(userInfo.getId());
 		values.add(userInfo.getPw());
