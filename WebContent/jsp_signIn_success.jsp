@@ -41,4 +41,5 @@
 		if((id != "") || (password != "")) return false;
 		return true;
 	}
+
 %>

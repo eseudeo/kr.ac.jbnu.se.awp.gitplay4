@@ -23,4 +23,5 @@
 		out.println("<script>alert('" + request.getAttribute(Constants.REDIRECTCAUSE) + "');</script>");
 		request.removeAttribute(Constants.REDIRECTCAUSE);
 	}
+
 %>
