@@ -2,25 +2,26 @@ package data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Date;
 
 public class User {
 	private int user_num;
 	private String id;
 	private String pw;
-	private String bday;
+	private Date bday;
 	private String name;
 	private List f_list;
 	
 	public User() {
-		this("" ,"" ,"" ,"");
+		this("" ,"" ,new Date(0,1,1),"");
 	}
-	public User(String id, String pw, String bday, String name) {
+	public User(String id, String pw, Date bday, String name) {
 		this(id,pw,bday,name,new ArrayList());
 	}
-	public User(String id, String pw, String bday, String name, List f_list) {
+	public User(String id, String pw, Date bday, String name, List f_list) {
 		this(0, id, pw, bday, name, f_list);
 	}
-	public User(int user_num, String id, String pw, String bday, String name, List f_list) {
+	public User(int user_num, String id, String pw, Date bday, String name, List f_list) {
 		this.user_num = user_num;
 		this.id = id;
 		this.pw = pw;
@@ -47,10 +48,10 @@ public class User {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
-	public String getBday() {
+	public Date getBday() {
 		return bday;
 	}
-	public void setBday(String bday) {
+	public void setBday(Date bday) {
 		this.bday = bday;
 	}
 	public String getName() {

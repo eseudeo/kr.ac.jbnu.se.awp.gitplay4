@@ -1,6 +1,7 @@
 package sign;
 
 import java.util.*;
+import java.sql.Date;
 import data.Constants;
 import data.DatabaseAccess;
 import data.User;
@@ -14,7 +15,7 @@ public class SignInClass {
 	}
 	
 	public boolean signIn(String id, String password) {
-		List userList = new ArrayList();
+		List<Map> userList = new ArrayList<Map>();
 		List values = new ArrayList();
 		String condition = new StringBuffer("select * from ")
 				.append(Constants.DB_TABLE_USER_MANAGEMENT).append(" where ")
@@ -22,14 +23,14 @@ public class SignInClass {
 		values.add(id);
 		userList = dba.getData(condition,values);
 		for(int count = 0; count < userList.size(); count++) {
-			Map row = (Map)userList.get(count);
+			Map row = userList.get(count);
 			if(password.equals(row.get(Constants.USERINFO_PASSWORD))){
 				List favoriteMembers = new ArrayList();
 				if(row.get(Constants.USERINFO_FAVORITEMEMBERS) != null) {
-					favoriteMembers.add(row.get(Constants.USERINFO_FAVORITEMEMBERS).toString());
+					favoriteMembers = splitComma(row.get(Constants.USERINFO_FAVORITEMEMBERS).toString());
 				}
 				User tmp = new User(row.get(Constants.USERINFO_ID).toString(), row.get(Constants.USERINFO_PASSWORD).toString(), 
-						row.get(Constants.USERINFO_BIRTHDAY).toString(), row.get(Constants.USERINFO_USERNAME).toString(), favoriteMembers);
+						(Date)row.get(Constants.USERINFO_BIRTHDAY), row.get(Constants.USERINFO_USERNAME).toString(), favoriteMembers);
 				currentUser = tmp;
 				return true;
 			}
@@ -44,5 +45,9 @@ public class SignInClass {
 	private boolean isEmpty(String id, String password) {
 		if((id != "") || (password != "")) return false;
 		return true;
+	}
+	private List splitComma(String original) {
+		String[] members = original.split(",");
+		return Arrays.asList(members);
 	}
 }
