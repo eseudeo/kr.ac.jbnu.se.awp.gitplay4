@@ -8,7 +8,6 @@ public class DatabaseAccess {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	
-
 	private DatabaseAccess() {
 		try {
 			Class.forName(Constants.JDBC_DRIVER);
@@ -103,7 +102,5 @@ public class DatabaseAccess {
 			if(clone.charAt(count) == '?') 
 				numberOfQm++;
 		return numberOfQm;
-	}
-	private void example() {
 	}
 }
