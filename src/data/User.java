@@ -29,7 +29,6 @@ public class User {
 		this.name = name;
 		this.f_list = f_list; // 얕은 복사 문제점이 될수 있다. 지금은 놔두자
 	}
-	
 	public int getUser_num() {
 		return user_num;
 	}
