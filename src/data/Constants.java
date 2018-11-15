@@ -1,6 +1,5 @@
 package data;
 public class Constants {
-
 	public static String JDBC_DRIVER  = "com.mysql.jdbc.Driver";
 	public static String DB_NAME = "pofo";
 	public static String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME + "?serverTimezone=UTC";

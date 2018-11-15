@@ -13,7 +13,6 @@ public class SignInClass {
 	public SignInClass() {
 		dba = DatabaseAccess.getInstance();
 	}
-	
 	public boolean signIn(String id, String password) {
 		List<Map> userList = new ArrayList<Map>();
 		List values = new ArrayList();
@@ -37,11 +36,9 @@ public class SignInClass {
 		}
 		return false;
 	}
-	
 	public User getCurrentUser() {
 		return currentUser;
 	}
-
 	private boolean isEmpty(String id, String password) {
 		if((id != "") || (password != "")) return false;
 		return true;
