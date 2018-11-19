@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.User,sign.SignUpClass,data.Constants"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.User,sign.SignUpClass,data.Constants,java.sql.Date"
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,7 +15,9 @@
 	username = request.getParameter(Constants.USERINFO_USERNAME);
 	if(Integer.valueOf(month) < 10) month = "0" + month;
 	if(Integer.valueOf(day) < 10) day = "0" + day;
-	dob = request.getParameter("selectYear") + month + day;
+	dob = new StringBuffer(request.getParameter("selectYear")).append("-")
+			.append(month).append("-")
+			.append(day).toString();
 	
 	if(checkIsEmpty(id, password, username)) redirectCause = "빈칸을 채워주세요";
 	else if(checkHasSpace(id, password, username)) redirectCause = "띄어쓰기는 허용되지 않습니다";
@@ -24,7 +26,7 @@
 	else if(!(checkUsername(username))) redirectCause = "이름이 너무 깁니다";
 	else {
 		SignUpClass signUp = new SignUpClass();
-		if(!(signUp.signUp(new User(id, password, dob, username)))){
+		if(!(signUp.signUp(new User(id, password, Date.valueOf(dob), username)))){
 			redirectCause = "아이디가 중복되거나 연결이 좋지 않습니다";
 			redirectUrl = Constants.JSP_SIGNUP_FORM;
 		}else{
