@@ -8,7 +8,6 @@ public class DatabaseAccess {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	
-
 	private DatabaseAccess() {
 		try {
 			Class.forName(Constants.JDBC_DRIVER);

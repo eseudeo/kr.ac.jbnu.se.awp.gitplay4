@@ -10,7 +10,6 @@ public class SignUpClass {
 	
 	public SignUpClass() {
 		dba = DatabaseAccess.getInstance();
-		
 	}
 	
 	public boolean signUp(User userInfo) {
