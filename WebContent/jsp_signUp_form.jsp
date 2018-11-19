@@ -32,8 +32,8 @@
 </html>
 <%
 	if(request.getAttribute(Constants.REDIRECTCAUSE) != null){
-		out.println("<script>alert('" + request.getAttribute("redirectCause") + "');</script>");
-		request.removeAttribute("Cause");
+		out.println("<script>alert('" + request.getAttribute(Constants.REDIRECTCAUSE) + "');</script>");
+		request.removeAttribute(Constants.REDIRECTCAUSE);
 	}
 %>
 <%!
