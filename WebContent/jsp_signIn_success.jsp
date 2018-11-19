@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import = "sign.SignInClass,data.Constants,data.User"
     pageEncoding="UTF-8"%>
+<jsp:useBean id="currentUser" class="data.User" scope="page" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% request.setCharacterEncoding("utf-8"); %>
 <%
@@ -21,7 +22,7 @@
 <%
 	if(signIn.getCurrentUser() != null) {
 		session.setAttribute(Constants.CURRENTUSER, signIn.getCurrentUser());
-		User currentUser = (User)session.getAttribute(Constants.CURRENTUSER);
+		currentUser = (User)session.getAttribute(Constants.CURRENTUSER);
 		out.println( currentUser.getId() + "님 안녕하세요");
 	}else {
 		request.setAttribute(Constants.REDIRECTCAUSE, redirectCause);
