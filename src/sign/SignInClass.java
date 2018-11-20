@@ -25,7 +25,7 @@ public class SignInClass {
 			Map row = userList.get(count);
 			if(password.equals(row.get(Constants.USERINFO_PASSWORD))){
 				List favoriteMembers = new ArrayList();
-				if(row.get(Constants.USERINFO_FAVORITEMEMBERS) != null) {
+				if(row.get(Constants.USERINFO_FAVORIx`x`TEMEMBERS) != null) {
 					favoriteMembers = splitComma(row.get(Constants.USERINFO_FAVORITEMEMBERS).toString());
 				}
 				User tmp = new User(row.get(Constants.USERINFO_ID).toString(), row.get(Constants.USERINFO_PASSWORD).toString(), 
