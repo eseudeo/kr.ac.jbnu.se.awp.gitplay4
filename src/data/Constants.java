@@ -9,8 +9,17 @@ public class Constants {
 	public static String DB_TABLE_USER_PROFILE = "profile";	
 	
 	public static String DB_TABLE_ARTICLE = "article";	
-	public static String SUBJECT = "subject";	
-	public static String WRITER = "writer";	
+	public static String TITLE = "title";	
+	public static String WRITER = "writer";
+	public static String DATE = "date";	
+	public static String CATEGORY = "category";	
+	public static String CONTENT = "content";
+	public static String POST_IMG = "post_img";	
+	public static String POST_IPT = "post_ipt";	
+	public static String POST_LIKE = "post_like";	
+	public static String POST_NUM = "post_num";	
+	public static String POST_HIT = "post_hit";	
+	public static String POST_LIKE_USER = "post_like_user";	
 	
 	public static String USERINTO_USERNUMBER = "user_num";
 	public static String USERINFO_ID = "id";

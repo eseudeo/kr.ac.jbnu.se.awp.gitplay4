@@ -7,14 +7,19 @@
 <%
 	String redirectCause = "";
 	String redirectUrl = Constants.JSP_WRITE_FORM;
-	String subject,writer;
-	subject = request.getParameter(Constants.SUBJECT);
-	writer = request.getParameter(Constants.WRITER);
-
-
+	String title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user;
+	title = request.getParameter(Constants.TITLE);
+	category = request.getParameter(Constants.CATEGORY);
+	content = request.getParameter(Constants.CONTENT);
+	post_img = request.getParameter(Constants.POST_IMG);
+	post_ipt = request.getParameter(Constants.POST_IPT);
+	post_like = request.getParameter(Constants.POST_LIKE);
+	post_num = request.getParameter(Constants.POST_NUM);
+	post_hit = request.getParameter(Constants.POST_HIT);
+	post_like_user = request.getParameter(Constants.POST_LIKE_USER);
 
 		WriteClass Write = new WriteClass();
-		if(!(Write.write(subject, writer))){
+		if(!(Write.write(title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user))){
 			redirectCause = "아이디가 중복되거나 연결이 좋지 않습니다";
 			redirectUrl = Constants.JSP_SIGNUP_FORM;
 		}else{

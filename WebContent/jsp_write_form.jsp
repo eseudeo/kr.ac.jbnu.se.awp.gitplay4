@@ -26,17 +26,28 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 <img src="jbnu_logo.jpg" class="border border-dark rounded" width="100%" height="100">
 
 <BR>
-
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+      <h5 class="text-white h4">Collapsed content</h5>
+      <span class="text-muted">Toggleable via the navbar brand.</span>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</div>
 <hr>
-<font><B>글 쓰 기</B></font>
 <!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
 <form action="jsp_write.jsp" method=post enctype="multipart/form-data">
 
-<table width=580 border=1 cellpadding=2 cellspacing=1 bgcolor=#999999>
+<table width=580 border=0 cellpadding=2 cellspacing=1 >
 
 <!-- 입력 부분 -->
+<tr align="center"><H3>글 쓰기</H3></tr>
 <tr>
-
 <td width=100 align=left >제 목</td>
 <td align=center colspan="5">
 <INPUT type=text name=title size="70%">
@@ -64,7 +75,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 
 <td width=100 align=center >분 야</td>
 <td>
-<select>
+<select name="category">
   <option>정치</option>
   <option>경제</option>
   <option>사회</option>
@@ -73,7 +84,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 </td>
 <td width=100 align=center >중요도</td>
 <td align=center >
-<select>
+<select name="post_ipt">
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -85,13 +96,13 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 <tr>
 <td width=100 align=left >내용</td>
 <td align=left colspan="5" >
-<TEXTAREA name=comment cols=75 rows=15></TEXTAREA>
+<TEXTAREA name=content cols=75 rows=15></TEXTAREA>
 </td>
 </tr>
 <tr>
 <td width=100 align=left >사진 첨부</td>
 <td align=left colspan="5" >
-<input type="file" id="customFile"></td>
+<input type="file" id="customFile" name="post_img"></td>
 </tr>
 <tr>
 <td colspan=10 align=center>
