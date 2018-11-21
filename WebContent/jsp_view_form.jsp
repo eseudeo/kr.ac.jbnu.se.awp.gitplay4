@@ -1,8 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.Constants"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.Constants, java.util.*, post.WriteClass"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%
 
+List<Map> view = new ArrayList<Map>();
+
+WriteClass Write = new WriteClass();
+view = Write.view("8");
+Map row;
+row= view.get(0);
+
+%>
 <html>
 <head>
     <!-- Required meta tags -->
@@ -43,17 +52,17 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 </div>
 <hr>
 <!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
-<form action="jsp_write.jsp" method=get enctype="multipart/form-data">
-
 <table width=580 border=0 cellpadding=2 cellspacing=1 >
 
 <!-- 입력 부분 -->
 <tr align="center"><H3>글 쓰기</H3></tr>
 <tr>
 <td width=100 align=left >제 목</td>
-<td align=center colspan="5">
-<INPUT type=text name="title" size="70%">
+<td align=center colspan="4">
+<input type=text name="title" size="40%" value="<%= row.get(Constants.TITLE) %>"></input>
 </td>
+<td width=100 colspan="2">작성날짜</td>
+<td width=100 colspan="2"><%= row.get(Constants.REG_DATE) %></td>
 </tr>
 <tr>
 <td width=100>날짜</td>
@@ -74,7 +83,6 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 %>
 </select>일
 </td>
-
 <td width=100 align=center >분 야</td>
 <td>
 <select name="category">
@@ -84,7 +92,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
   <option>교육</option>
 </select>
 </td>
-<td width=100 align=center >중요도</td>
+<td width=200 align=center colspan="3" >중요도</td>
 <td align=center >
 <select name="post_ipt">
   <option>1</option>
@@ -97,13 +105,13 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 </td>
 <tr>
 <td width=100 align=left >내용</td>
-<td align=left colspan="5" >
-<TEXTAREA name="content" cols=75 rows=15></TEXTAREA>
+<td align=left colspan="7" >
+<TEXTAREA name="content" cols=75 rows=15 ><%= row.get(Constants.CONTENT) %></TEXTAREA>
 </td>
 </tr>
 <tr>
 <td width=100 align=left >사진 첨부</td>
-<td align=left colspan="5" >
+<td align=left colspan="7" >
 <input type="file" id="customFile" name="post_img"></td>
 </tr>
 <tr>
@@ -118,7 +126,6 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 
 <!-- 입력 부분 끝 -->
 </table>
-</form>
 </center>
 </body>
 </html> 

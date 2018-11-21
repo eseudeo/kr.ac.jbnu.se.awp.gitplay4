@@ -8,9 +8,10 @@ public class Constants {
 	public static String DB_TABLE_USER_MANAGEMENT = "user_management";
 	public static String DB_TABLE_USER_PROFILE = "profile";	
 	
-	public static String DB_TABLE_ARTICLE = "article";	
+	public static String DB_TABLE_POST = "post";	
 	public static String TITLE = "title";	
 	public static String WRITER = "writer";
+	public static String REG_DATE = "reg_date";	
 	public static String DATE = "date";	
 	public static String CATEGORY = "category";	
 	public static String CONTENT = "content";
