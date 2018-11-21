@@ -2,7 +2,9 @@
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<% request.setCharacterEncoding("utf-8"); %>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
 
 <%
 	String redirectCause = "";
@@ -32,11 +34,12 @@
 if(Integer.valueOf(month) < 10) month = "0" + month;
 	if(Integer.valueOf(day) < 10) day = "0" + day;
 	date = new StringBuffer(request.getParameter("selectYear")).append("-")
-			.append(month).append("-")
-			.append(day).toString();
+	.append(month).append("-")
+	.append(day).toString();
 
 		WriteClass Write = new WriteClass();
-		Write.write(title, date, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user);
+		//Write.write(title,content);
+		Write.write(title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user);
 		//if(!(Write.write(title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user))){
 		//	redirectCause = "아이디가 중복되거나 연결이 좋지 않습니다";
 		//	redirectUrl = Constants.JSP_SIGNUP_FORM;
@@ -56,8 +59,7 @@ if(Integer.valueOf(month) < 10) month = "0" + month;
 <H2>회원가입 성공</H2>
 </body>
 </html>
-<%!
-	private boolean checkId(String id) {
+<%!private boolean checkId(String id) {
 		if(id.length() < 3 || id.length() >= 20) return false;
 		else return true;
 	}
@@ -76,5 +78,4 @@ if(Integer.valueOf(month) < 10) month = "0" + month;
 	private boolean checkIsEmpty(String id, String pw, String name) {
 		if((id.equals("")) || (pw.equals("")) || (name.equals("")))	return true;
 		else return false;
-	}
-%>
+	}%>

@@ -1,16 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.Constants, java.util.*, post.WriteClass"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.Constants, java.util.*,post.WriteClass"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-
-List<Map> view = new ArrayList<Map>();
+	List<Map> view = new ArrayList<Map>();
 
 WriteClass Write = new WriteClass();
 view = Write.view("8");
 Map row;
 row= view.get(0);
-
 %>
 <html>
 <head>
@@ -30,6 +28,15 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 
 -->
     </style>
+    <script type="text/javascript">
+    function Delete()
+    {
+        if(confirm("정말 삭제하시겠습니까?") == true)
+        {
+        	location.href = "jsp_Delete.jsp?post_num=9";
+        }
+    }
+    </script>
 <body topmargin=0 leftmargin=0 text=#464646>
 
 <center>
@@ -69,21 +76,21 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 <td>
 <select name ="selectYear">
 <%
-	out.println(returnOptionsReverse(2018, 1929));
+	out.println(returnOptionsReverse(2018, 1929, 2016));
 %>
 </select>년
 <select name ="selectMonth">
 <%
-	out.println(returnOptions(1, 12, 1));
+	out.println(returnOptions(1, 12, 12));
 %>
 </select>월
 <select name ="selectDay">
 <%
-	out.println(returnOptions(1,31, 1));
+	out.println(returnOptions(1,31, 28));
 %>
 </select>일
 </td>
-<td width=100 align=center >분 야</td>
+<td width=100 align=center >분 야 : <%= row.get(Constants.CATEGORY) %></td>
 <td>
 <select name="category">
   <option>정치</option>
@@ -92,7 +99,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
   <option>교육</option>
 </select>
 </td>
-<td width=200 align=center colspan="3" >중요도</td>
+<td width=200 align=center colspan="3" >중요도 : <%= row.get(Constants.POST_IPT) %></td>
 <td align=center >
 <select name="post_ipt">
   <option>1</option>
@@ -116,9 +123,9 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 </tr>
 <tr>
 <td colspan=10 align=center>
-<INPUT type=submit value="글 쓰기">
+<INPUT type=submit value="수정하기">
 &nbsp;&nbsp;
-<INPUT type=reset value="다시 쓰기">
+<INPUT type=button value="삭제하기" onclick="Delete();">
 &nbsp;&nbsp;
 <INPUT type=button value="되돌아가기" onclick="history.back(-1)">
 </td>
@@ -129,8 +136,8 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 </center>
 </body>
 </html> 
-<%!
-	private String returnOptions(int startNum, int endNum, int selectNum){
+
+<%!private String returnOptions(int startNum, int endNum, int selectNum){
 		StringBuffer count = new StringBuffer();
 		for(int i=startNum;startNum<=endNum;startNum++) {
 			if(startNum == selectNum) {
@@ -141,10 +148,14 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 		}
 		return count.toString();
 	}
-	private String returnOptionsReverse(int endNum, int startNum){
+	private String returnOptionsReverse(int endNum, int startNum, int selectNum){
 		StringBuffer count = new StringBuffer();
-		do count.append("<option value=" + (endNum) + ">" + (endNum) + "</option>\n");		
-		while(endNum-- >= startNum);
+		for(int i=endNum;endNum >= startNum;endNum--) {
+			if(endNum == selectNum) {
+				count.append("<option value=" + (endNum) + " selected=\"selected\" >" + (endNum) + "</option>\n");
+
+			}
+			count.append("<option value=" + (endNum) + ">" + (endNum) + "</option>\n");
+		}
 		return count.toString();
-	}
-%>
+	}%>
