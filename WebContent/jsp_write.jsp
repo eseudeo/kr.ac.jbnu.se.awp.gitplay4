@@ -38,8 +38,8 @@ if(Integer.valueOf(month) < 10) month = "0" + month;
 	.append(day).toString();
 
 		WriteClass Write = new WriteClass();
-		//Write.write(title,content);
-		Write.write(title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user);
+		Write.write(title,content);
+		//Write.write(title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user);
 		//if(!(Write.write(title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user))){
 		//	redirectCause = "아이디가 중복되거나 연결이 좋지 않습니다";
 		//	redirectUrl = Constants.JSP_SIGNUP_FORM;

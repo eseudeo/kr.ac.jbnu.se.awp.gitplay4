@@ -12,25 +12,25 @@ public class WriteClass {
 		dba = DatabaseAccess.getInstance();
 	}
 	
-//	public boolean write(String title,String content) {
-//		List value = new ArrayList();
-//		List values = new ArrayList();
-//		List userList = new ArrayList();
-//		String condition = "";
-//		String result = "";
-//		Map now;
-//		values.add(title);
-//		values.add(content);
-//
-//		
-//		condition = new StringBuffer("insert into ")
-//				.append(Constants.DB_TABLE_POST).append("(")
-//				.append(Constants.TITLE).append(",")
-//				.append(Constants.CONTENT).append(",").append(") values(?,?)").toString();
-//
-//			dba.setData(condition, values);
-//			return true;
-//	}
+	public boolean write(String title,String content) {
+		List value = new ArrayList();
+		List values = new ArrayList();
+		List userList = new ArrayList();
+		String condition = "";
+		String result = "";
+		Map now;
+		values.add(title);
+		values.add(content);
+
+		
+		condition = new StringBuffer("insert into ")
+				.append(Constants.DB_TABLE_POST).append("(")
+				.append(Constants.TITLE).append(",")
+				.append(Constants.CONTENT).append(",").append(") values(?,?)").toString();
+
+			dba.setData(condition, values);
+			return true;
+	}
 	
 	public boolean write(String title, String date, String category, String content, String post_img, String post_ipt, String post_like, String post_num, String post_hit, String post_like_user) {
 		List value = new ArrayList();
