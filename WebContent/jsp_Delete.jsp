@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "post.WriteClass2,data.Constants"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "post.WriteClass,data.Constants"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
-String post_num=request.getParameter(Constants.POST_NUM);
-WriteClass2 Write = new WriteClass2();
+<%
+	String post_num=request.getParameter(Constants.POST_NUM);
+WriteClass Write = new WriteClass();
 		Write.delete(post_num);
-		 %>
+%>
 </body>
 </html>

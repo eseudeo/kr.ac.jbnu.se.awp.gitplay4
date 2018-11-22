@@ -5,8 +5,9 @@
 <%
 	List<Map> view = new ArrayList<Map>();
 
+String post_num="8";
 WriteClass Write = new WriteClass();
-view = Write.view("8");
+view = Write.view(post_num);
 Map row;
 row= view.get(0);
 %>
@@ -33,7 +34,8 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
     {
         if(confirm("정말 삭제하시겠습니까?") == true)
         {
-        	location.href = "jsp_Delete.jsp?post_num=9";
+        	
+        	location.href = 'jsp_Delete.jsp?post_num=<%=post_num%>';
         }
     }
     </script>
@@ -48,7 +50,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
       <h5 class="text-white h4">Collapsed content</h5>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
+      <span class="text-muted">Toggleable via the navbar brand.</span>	
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">
@@ -59,14 +61,13 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 </div>
 <hr>
 <!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
-<table width=580 border=0 cellpadding=2 cellspacing=1 >
+<table width=580 border=1 cellpadding=2 cellspacing=1 >
 
 <!-- 입력 부분 -->
 <tr align="center"><H3>글 쓰기</H3></tr>
 <tr>
 <td width=100 align=left >제 목</td>
-<td align=center colspan="4">
-<input type=text name="title" size="40%" value="<%= row.get(Constants.TITLE) %>"></input>
+<td align=center colspan="4"><%= row.get(Constants.TITLE) %>
 </td>
 <td width=100 colspan="2">작성날짜</td>
 <td width=100 colspan="2"><%= row.get(Constants.REG_DATE) %></td>
@@ -112,9 +113,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 </td>
 <tr>
 <td width=100 align=left >내용</td>
-<td align=left colspan="7" >
-<TEXTAREA name="content" cols=75 rows=15 ><%= row.get(Constants.CONTENT) %></TEXTAREA>
-</td>
+<td align=left colspan="7" width=200 height=300 align="right"><%= row.get(Constants.CONTENT) %></td>
 </tr>
 <tr>
 <td width=100 align=left >사진 첨부</td>
