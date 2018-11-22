@@ -20,21 +20,24 @@ public class SignInClass {
 				.append(Constants.DB_TABLE_USER_MANAGEMENT).append(" where ")
 				.append(Constants.USERINFO_ID).append(" = ?").toString();
 		values.add(id);
-		userList = dba.getData(condition,values);
-		for(int count = 0; count < userList.size(); count++) {
-			Map row = userList.get(count);
-			if(password.equals(row.get(Constants.USERINFO_PASSWORD))){
-				List favoriteMembers = new ArrayList();
-				if(row.get(Constants.USERINFO_FAVORITEMEMBERS) != null) {
-					favoriteMembers = splitComma(row.get(Constants.USERINFO_FAVORITEMEMBERS).toString());
+		if((userList = dba.getData(condition,values)) == null) {
+			return false;
+		}else {
+			for(int count = 0; count < userList.size(); count++) {
+				Map row = userList.get(count);
+				if(password.equals(row.get(Constants.USERINFO_PASSWORD))){
+					List favoriteMembers = new ArrayList();
+					if(row.get(Constants.USERINFO_FAVORITEMEMBERS) != null) {
+						favoriteMembers = splitComma(row.get(Constants.USERINFO_FAVORITEMEMBERS).toString());
+					}
+					User tmp = new User(row.get(Constants.USERINFO_ID).toString(), row.get(Constants.USERINFO_PASSWORD).toString(), 
+							(Date)row.get(Constants.USERINFO_BIRTHDAY), row.get(Constants.USERINFO_USERNAME).toString(), favoriteMembers);
+					currentUser = tmp;
+					return true;
 				}
-				User tmp = new User(row.get(Constants.USERINFO_ID).toString(), row.get(Constants.USERINFO_PASSWORD).toString(), 
-						(Date)row.get(Constants.USERINFO_BIRTHDAY), row.get(Constants.USERINFO_USERNAME).toString(), favoriteMembers);
-				currentUser = tmp;
-				return true;
 			}
+			return false;
 		}
-		return false;
 	}
 	public User getCurrentUser() {
 		return currentUser;
