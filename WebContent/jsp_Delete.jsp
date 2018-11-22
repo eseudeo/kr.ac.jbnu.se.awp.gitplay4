@@ -6,11 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+    <script type="text/javascript">
+    function Back()
+    {
+        	location.href = 'jsp_signIn_form.jsp';
+    }
+    </script>
 <body>
 <%
 	String post_num=request.getParameter(Constants.POST_NUM);
 WriteClass Write = new WriteClass();
 		Write.delete(post_num);
-%>
+		%>
+		
+		<INPUT type=button value="뒤로가기" onclick="Back();">
+		
+		
+		
+		
 </body>
 </html>

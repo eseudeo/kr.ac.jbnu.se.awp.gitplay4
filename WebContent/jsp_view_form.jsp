@@ -5,7 +5,7 @@
 <%
 	List<Map> view = new ArrayList<Map>();
 
-String post_num="8";
+String post_num=request.getParameter(Constants.POST_NUM);
 WriteClass Write = new WriteClass();
 view = Write.view(post_num);
 Map row;

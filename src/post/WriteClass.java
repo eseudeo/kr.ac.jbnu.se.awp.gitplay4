@@ -77,6 +77,13 @@ public class WriteClass {
 		return dba.getData(condition,values);
 	}
 	
+	public List<Map> viewlist() {
+		List values = new ArrayList();
+		String condition = new StringBuffer("select * from ")
+				.append(Constants.DB_TABLE_POST).toString();
+		return dba.getData(condition,values);
+	}
+	
 	public List<Map> getDate(String Post_num) {
 		List values = new ArrayList();
 		String condition = new StringBuffer("select from_unixtime(unix_timestamp(")
