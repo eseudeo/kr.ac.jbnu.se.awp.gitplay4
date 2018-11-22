@@ -14,7 +14,7 @@ public class Constants {
 	public static String USERINFO_USERNAME = "name";
 	public static String USERINFO_FAVORITEMEMBERS = "f_list";
 	public static String CURRENTUSER = "currentUser";
-	public static String JSP_MAINPAGE = "jsp_signIn_form.jsp";
+	public static String JSP_MAINPAGE = "jsp_main_form.jsp";
 	public static String JSP_SIGNIN_FORM = "jsp_signIn_form.jsp";
 	public static String JSP_SIGNUP_FORM = "jsp_signUp_form.jsp";
 	public static String REDIRECTCAUSE = "redirectCause";
