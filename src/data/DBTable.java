@@ -2,7 +2,6 @@ package data;
 
 public enum DBTable {
 	USER_MANAGEMENT,PROFILE,POST,USER_PAGE;
-	
 	@Override
 	public String toString() {
 		switch(this) {

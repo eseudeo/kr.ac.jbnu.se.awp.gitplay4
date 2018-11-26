@@ -14,4 +14,5 @@ public class Constants {
 	public static String JSP_SIGNIN_FORM = "jsp_signIn_form.jsp";
 	public static String JSP_SIGNUP_FORM = "jsp_signUp_form.jsp";
 	public static String REDIRECTCAUSE = "redirectCause";
+	
 }

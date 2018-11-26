@@ -2,7 +2,6 @@ package data;
 
 public enum UserColumn {
 	ID,PASSWORD,BIRTHDAY,USERNAME,FAVORITEMEMBERS,EMAIL,USERNUMBER;
-	
 	@Override
 	public String toString() {
 		switch(this) {
