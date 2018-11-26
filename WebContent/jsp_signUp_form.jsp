@@ -26,6 +26,7 @@
 %>
 </select>일
 이름 : <input type=text name=name>
+Email : <input type=text name=email>
 <input type=submit value="등록">
 </form>
 </body>

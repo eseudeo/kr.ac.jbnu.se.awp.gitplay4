@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "sign.SignInClass,data.Constants,data.User"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "sign.SignInClass,data.Constants,data.User,data.UserColumn"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="currentUser" class="data.User" scope="page" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,8 +8,8 @@
 	String redirectUrl = Constants.JSP_SIGNIN_FORM;
 	String id,password;
 	SignInClass signIn = new SignInClass();
-	id = request.getParameter(Constants.USERINFO_ID);
-	password = request.getParameter(Constants.USERINFO_PASSWORD);
+	id = request.getParameter(UserColumn.ID.toString());
+	password = request.getParameter(UserColumn.PASSWORD.toString());
 	if(isEmpty(id,password)) {
 		redirectCause = "빈칸을 작성하세요";
 	}else if(!signIn.signIn(id,password)){

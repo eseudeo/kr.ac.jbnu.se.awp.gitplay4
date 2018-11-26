@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.User,sign.SignUpClass,data.Constants,java.sql.Date"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.User,sign.SignUpClass,data.Constants,data.UserColumn,java.sql.Date"
     pageEncoding="UTF-8"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,12 +7,13 @@
 <%
 	String redirectCause = "";
 	String redirectUrl = Constants.JSP_SIGNUP_FORM;
-	String id,password,dob,username;
+	String id,password,dob,username,email;
 	String month = request.getParameter("selectMonth");
 	String day = request.getParameter("selectDay");
-	id = request.getParameter(Constants.USERINFO_ID);
-	password = request.getParameter(Constants.USERINFO_PASSWORD);
-	username = request.getParameter(Constants.USERINFO_USERNAME);
+	id = request.getParameter(UserColumn.ID.toString());
+	password = request.getParameter(UserColumn.PASSWORD.toString());
+	username = request.getParameter(UserColumn.USERNAME.toString());
+	email = request.getParameter(UserColumn.EMAIL.toString());
 	if(Integer.valueOf(month) < 10) month = "0" + month;
 	if(Integer.valueOf(day) < 10) day = "0" + day;
 	dob = new StringBuffer(request.getParameter("selectYear")).append("-")
@@ -26,7 +27,7 @@
 	else if(!(checkUsername(username))) redirectCause = "이름이 너무 깁니다";
 	else {
 		SignUpClass signUp = new SignUpClass();
-		if(!(signUp.signUp(new User(id, password, Date.valueOf(dob), username)))){
+		if(!(signUp.signUp(new User(id, password, Date.valueOf(dob), username,email)))){
 			redirectCause = "아이디가 중복되거나 연결이 좋지 않습니다";
 			redirectUrl = Constants.JSP_SIGNUP_FORM;
 		}else{

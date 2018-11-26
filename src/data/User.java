@@ -10,26 +10,29 @@ public class User {
 	private String pw;
 	private Date bday;
 	private String name;
+	private String email;
 	private List f_list;
+
 	
 	public User() {
-		this("" ,"" ,new Date(0,1,1),"");
+		this("" ,"" ,new Date(0,1,1),"","");
 	}
-	public User(String id, String pw, Date bday, String name) {
-		this(id,pw,bday,name,new ArrayList());
+	public User(String id, String pw, Date bday, String name, String email) {
+		this(id,pw,bday,name,email,new ArrayList());
 	}
-	public User(String id, String pw, Date bday, String name, List f_list) {
-		this(0, id, pw, bday, name, f_list);
+
+	public User(String id, String pw, Date bday, String name, String email, List f_list) {
+		this(0, id, pw, bday, name, email, f_list);
 	}
-	public User(int user_num, String id, String pw, Date bday, String name, List f_list) {
+	public User(int user_num, String id, String pw, Date bday, String name, String email, List f_list) {
 		this.user_num = user_num;
 		this.id = id;
 		this.pw = pw;
 		this.bday = bday;
 		this.name = name;
 		this.f_list = f_list; // 얕은 복사 문제점이 될수 있다. 지금은 놔두자
+		this.email = email;
 	}
-	
 	public int getUser_num() {
 		return user_num;
 	}
@@ -65,5 +68,11 @@ public class User {
 	}
 	public void setF_list(List f_list) {
 		this.f_list = f_list;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

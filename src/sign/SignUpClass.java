@@ -2,8 +2,10 @@ package sign;
 
 import java.util.*;
 import data.Constants;
+import data.DBTable;
 import data.DatabaseAccess;
 import data.User;
+import data.UserColumn;
 
 public class SignUpClass {
 	private DatabaseAccess dba;
@@ -26,30 +28,31 @@ public class SignUpClass {
 		values.add(userInfo.getPw());
 		values.add(userInfo.getBday());
 		values.add(userInfo.getName());
+		values.add(userInfo.getEmail());
 		
 		condition = new StringBuffer("select ")
-				.append(Constants.USERINFO_ID).append(" from ")
-				.append(Constants.DB_TABLE_USER_MANAGEMENT).append(" where ")
-				.append(Constants.USERINFO_ID).append(" = ?").toString();
+				.append(UserColumn.ID).append(" from ")
+				.append(DBTable.USER_MANAGEMENT).append(" where ")
+				.append(UserColumn.ID).append(" = ?").toString();
 		userList = dba.getData(condition, value);
 		if(userList != null) {
 			if(userList.size() > 0)
 			return false;
 		}
 		condition = new StringBuffer("insert into ")
-				.append(Constants.DB_TABLE_USER_MANAGEMENT).append("(")
-				.append(Constants.USERINFO_ID).append(",")
-				.append(Constants.USERINFO_PASSWORD).append(",")
-				.append(Constants.USERINFO_BIRTHDAY).append(",")
-				.append(Constants.USERINFO_USERNAME).append(") values(?,?,?,?)").toString();
+				.append(DBTable.USER_MANAGEMENT).append("(")
+				.append(UserColumn.ID).append(",")
+				.append(UserColumn.PASSWORD).append(",")
+				.append(UserColumn.BIRTHDAY).append(",")
+				.append(UserColumn.USERNAME).append(",")
+				.append(UserColumn.EMAIL).append(") values(?,?,?,?,?)").toString();
 		if(dba.setData(condition, values)) {
 			condition = new StringBuffer("insert into ")
-					.append(Constants.DB_TABLE_USER_PROFILE).append("(")
-					.append(Constants.USERINFO_ID).append(") values(?)").toString();
+					.append(DBTable.PROFILE).append("(")
+					.append(UserColumn.ID).append(") values(?)").toString();
 			values.clear();
 			values.add(userInfo.getId());
-			dba.setData(condition, values);
-			return true;
+			return dba.setData(condition, values);
 		}
 		return false;
 	}
