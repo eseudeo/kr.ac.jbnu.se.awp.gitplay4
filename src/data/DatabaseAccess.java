@@ -74,9 +74,9 @@ public class DatabaseAccess {
 
 			while(rs.next()) {
 				ResultSetMetaData metadata = rs.getMetaData();
-				Map index = new HashMap();
+				Map<String, Object> index = new HashMap<String,Object>();
 				for(int count = 0; count < metadata.getColumnCount(); count++) {
-					index.put(metadata.getColumnLabel(count+1).toString(), rs.getObject(metadata.getColumnLabel(count+1).toString())); //문제점
+					index.put(metadata.getColumnLabel(count+1).toString(), rs.getObject(metadata.getColumnLabel(count+1).toString()));
 				}
 				result.add(index);
 			}
