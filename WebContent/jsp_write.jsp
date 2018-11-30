@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	import="data.User,post.PostClass,data.Constants,java.sql.Date,sign.SignInClass"
+	import="post.PostClass,data.Constants,java.sql.Date"
 	pageEncoding="UTF-8"%>
 <%@ page
 	import="java.io.File, com.oreilly.servlet.MultipartRequest, com.oreilly.servlet.multipart.DefaultFileRenamePolicy, java.util.Enumeration"%>
@@ -14,7 +14,6 @@
 	String redirectCause = "";
 	String redirectUrl = Constants.JSP_WRITE_FORM;
 	
-	SignInClass signIn = new SignInClass();
 	String writer = "newlhh";
 	
 	String uploadPath=request.getRealPath("/upload");
