@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "post.WriteClass,data.Constants"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "post.PostClass,data.Constants"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,9 +15,9 @@
 <body>
 <%
 	String post_num=request.getParameter(Constants.POST_NUM);
-WriteClass Write = new WriteClass();
+PostClass Write = new PostClass();
 		Write.delete(post_num);
-		%>
+%>
 		
 		<INPUT type=button value="뒤로가기" onclick="Back();">
 		

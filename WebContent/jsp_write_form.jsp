@@ -25,29 +25,16 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 
 <center>
 
-<img src="jbnu_logo.jpg" class="border border-dark rounded" width="100%" height="100">
 
-<BR>
-<div class="pos-f-t">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-      <h5 class="text-white h4">Collapsed content</h5>
-      <span class="text-muted">Toggleable via the navbar brand.</span>
-    </div>
-  </div>
-  <nav class="navbar navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
-</div>
-<hr>
 <!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
-<form action="jsp_write.jsp" method=get enctype="multipart/form-data">
+<form action="jsp_write.jsp" method=post enctype="multipart/form-data">
 
 <table width=580 border=0 cellpadding=2 cellspacing=1 >
 
+
 <!-- 입력 부분 -->
+<tr><img src="img/pofo_banner.jpg" class="border border-dark rounded" width="100%" height="100"></tr>
+<hr>
 <tr align="center"><H3>글 쓰기</H3></tr>
 <tr>
 <td width=100 align=left >제 목</td>
@@ -78,20 +65,20 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 <td width=100 align=center >분 야</td>
 <td>
 <select name="category">
-  <option>정치</option>
-  <option>경제</option>
-  <option>사회</option>
-  <option>교육</option>
+  <option value="politics">정치</option>
+  <option value="economy">경제</option>
+  <option value="society">사회</option>
+  <option value="education">교육</option>
 </select>
 </td>
 <td width=100 align=center >중요도</td>
 <td align=center >
 <select name="post_ipt">
-  <option>1</option>
-  <option>2</option>
-  <option>3</option>
-  <option>4</option>
-  <option>5</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
   
 </select>
 </td>
@@ -104,7 +91,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 <tr>
 <td width=100 align=left >사진 첨부</td>
 <td align=left colspan="5" >
-<input type="file" id="customFile" name="post_img"></td>
+<input type="file" name="post_img"></td>
 </tr>
 <tr>
 <td colspan=10 align=center>

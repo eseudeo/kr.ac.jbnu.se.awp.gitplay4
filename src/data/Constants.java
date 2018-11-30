@@ -8,6 +8,7 @@ public class Constants {
 	public static String DB_TABLE_USER_MANAGEMENT = "user_management";
 	public static String DB_TABLE_USER_PROFILE = "profile";	
 	
+	//게시판 관련 CONSTANTS
 	public static String DB_TABLE_POST = "post";	
 	public static String TITLE = "title";	
 	public static String WRITER = "writer";

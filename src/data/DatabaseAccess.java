@@ -27,7 +27,7 @@ public class DatabaseAccess {
 	public boolean setData(String sqlQuery, List values) {
 		int numberOfQm = countQm(sqlQuery);
 		if(numberOfQm != values.size()) {
-			System.out.println("ë¬¼ìŒí‘œ ê°¯ìˆ˜ë‘ ì†ì„±ê°’ ê°¯ìˆ˜ê°€ ë‹¬ë¼");
+			System.out.println("ë¬¼ìŒ?‘œ ê°??ˆ˜?‘ ?†?„±ê°? ê°??ˆ˜ê°? ?‹¬?¼");
 			return false;
 		}
 		try {
@@ -61,7 +61,7 @@ public class DatabaseAccess {
 		List<Map> result = new ArrayList<Map>();
 		int numberOfQm = countQm(sqlQuery);
 		if(numberOfQm != values.size()) {
-			System.out.println("ë¬¼ìŒí‘œ ê°¯ìˆ˜ë‘ ì†ì„±ê°’ ê°¯ìˆ˜ê°€ ë‹¬ë¼");
+			System.out.println("ë¬¼ìŒ?‘œ ê°??ˆ˜?‘ ?†?„±ê°? ê°??ˆ˜ê°? ?‹¬?¼");
 			return null;
 		}
 		try {
@@ -76,7 +76,7 @@ public class DatabaseAccess {
 				ResultSetMetaData metadata = rs.getMetaData();
 				Map index = new HashMap();
 				for(int count = 0; count < metadata.getColumnCount(); count++) {
-					index.put(metadata.getColumnLabel(count+1).toString(), rs.getObject(metadata.getColumnLabel(count+1).toString())); //ë¬¸ì œì 
+					index.put(metadata.getColumnLabel(count+1).toString(), rs.getObject(metadata.getColumnLabel(count+1).toString())); //ë¬¸ì œ? 
 				}
 				result.add(index);
 			}
