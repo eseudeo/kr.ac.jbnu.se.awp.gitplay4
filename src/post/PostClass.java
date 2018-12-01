@@ -47,6 +47,40 @@ public class PostClass {
 		dba.setData(condition, values);
 		return true;
 	}
+	
+	public boolean modify(String title, String writer, Date date, String category, String content, String post_img, String post_ipt, String post_num) {
+		List value = new ArrayList();
+		List values = new ArrayList();
+		List userList = new ArrayList();
+		String condition = "";
+		String result = "";
+		Map now;
+		values.add(title);
+		values.add(writer);
+		values.add(date);
+		values.add(category);
+		values.add(content);
+		values.add(post_img);
+		values.add(post_ipt);
+		values.add(post_num);
+
+
+
+
+		condition = new StringBuffer("update ")
+				.append(Constants.DB_TABLE_POST).append(" set ")
+				.append(Constants.TITLE).append(" = ").append("?, ")
+				.append(Constants.WRITER).append(" = ").append("?, ")
+				.append(Constants.DATE).append(" = ").append("?, ")
+				.append(Constants.CATEGORY).append(" = ").append("?, ")
+				.append(Constants.CONTENT).append(" = ").append("?, ")
+				.append(Constants.POST_IMG).append(" = ").append("?, ")
+				.append(Constants.POST_IPT).append(" = ").append("?")
+				.append(" where ").append(Constants.POST_NUM).append(" = ").append(" ? ").toString();
+
+		dba.setData(condition, values);
+		return true;
+	}
 
 	//게시판 글 보기
 	public List<Map> view(String post_num) {
