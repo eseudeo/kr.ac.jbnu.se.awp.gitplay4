@@ -89,7 +89,7 @@ A:hover {
 								out.println(returnOptions(1, 12, Integer.valueOf(row.get(Constants.DATE).toString().substring(5, 7))));
 							%>
 					</select>월 <select name="selectDay">
-							<%
+							<%	
 								out.println(returnOptions(1, 31, Integer.valueOf(row.get(Constants.DATE).toString().substring(8, 10))));
 							%>
 					</select>일</td>
