@@ -12,7 +12,7 @@
 
 <%
 	String redirectCause = "";
-	String redirectUrl = Constants.JSP_WRITE_FORM;
+	String redirectUrl = "jsp_postList.jsp";
 	
 	String writer = "newlhh";
 	
@@ -43,18 +43,6 @@ new DefaultFileRenamePolicy());
 	title = multi.getParameter(Constants.TITLE);
 	category = multi.getParameter(Constants.CATEGORY);
 	content = multi.getParameter(Constants.CONTENT);
-
-
-	//if(!fileName.endsWith(".jpg")) {
-	//	File file = new File(directory + fileRealName);
-	//	file.delete();
-	//	out.write("업로드가 불가능한 확장자입니다.");
-	//}else {
-	//	new 
-	//}
-	
-
-	
 	post_ipt = multi.getParameter(Constants.POST_IPT);
 	
 if(Integer.valueOf(month) < 10) month = "0" + month;
@@ -65,45 +53,21 @@ if(Integer.valueOf(month) < 10) month = "0" + month;
 
 		PostClass Write = new PostClass();
 		//Write.write(title,content);
-		Write.write(title, writer, Date.valueOf(date), category, content, uploadPath+"/"+post_img, post_ipt);
-		
-		
-		//if(!(Write.write(title, category, content, post_img, post_ipt, post_like, post_num, post_hit, post_like_user))){
-		//	redirectCause = "아이디가 중복되거나 연결이 좋지 않습니다";
-		//	redirectUrl = Constants.JSP_SIGNUP_FORM;
-		//}else{
-		//	redirectCause = "님 회원가입을 축하드립니다";
-		//	redirectUrl = Constants.JSP_WRITE_FORM;
-		//}
+		if(Write.write(title, writer, Date.valueOf(date), category, content, uploadPath+"/"+post_img, post_ipt)) {
+
+			redirectCause = "write";
+			redirectUrl = "jsp_boardlist.jsp";
+		}else{
+			redirectCause = "error";
+			redirectUrl = "jsp_boardlist.jsp";
+		}
 	request.setAttribute(Constants.REDIRECTCAUSE, redirectCause);
 	request.getRequestDispatcher(redirectUrl).forward(request, response);
 %>
 <html>
 <head>
-<meta charset="UTF-8">
 <title></title>
 </head>
 <body>
-	<H2>회원가입 성공</H2>
 </body>
 </html>
-<%!private boolean checkId(String id) {
-		if(id.length() < 3 || id.length() >= 20) return false;
-		else return true;
-	}
-	private boolean checkPw(String password)	{
-		if((password.length() < 6) || (password.length() >= 20)) return false;
-		else return true;
-	}
-	private boolean checkUsername(String username) {
-		if(username.length() > 21) return false;
-		else return true;
-	}
-	private boolean checkHasSpace(String id, String pw, String name){
-		if((id.contains(" ")) || (pw.contains(" ")) || (name.contains(" "))) return true;
-		else return false;
-	}
-	private boolean checkIsEmpty(String id, String pw, String name) {
-		if((id.equals("")) || (pw.equals("")) || (name.equals("")))	return true;
-		else return false;
-	}%>

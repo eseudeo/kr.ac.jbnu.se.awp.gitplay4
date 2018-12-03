@@ -10,6 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script>
+function boardWriteCheck() {
+	var form = document.WriteForm;
+	if (form.title.value == '') {
+		alert('제목을 입력하세요.');
+		form.subject.focus();
+		return false;
+	}
+	if (form.content.value == '') {
+		alert('내용을 입력하세요');
+		form.writer.focus();
+		return false;
+	}
+	return true;
+}
+</script>
 <title>글쓰기</title>
 </head>
 <style>
@@ -27,7 +43,7 @@ A:hover { text-decoration : underline; color : black; font-size : 9pt; }
 
 
 <!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
-<form action="jsp_write.jsp" method=post enctype="multipart/form-data">
+<form name="WriteForm" action="jsp_write.jsp" method=post enctype="multipart/form-data" onsubmit="return boardWriteCheck();">
 
 <table width=580 border=0 cellpadding=2 cellspacing=1 >
 

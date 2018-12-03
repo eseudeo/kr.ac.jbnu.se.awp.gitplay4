@@ -129,6 +129,28 @@ public class PostClass {
 				.append(Constants.DB_TABLE_POST).toString();
 		return dba.getData(condition,values);
 	}
+	
+	public boolean favorite(String id, String post_num) {
+		List value = new ArrayList();
+		List values = new ArrayList();
+		List userList = new ArrayList();
+		String condition = "";
+		String result = "";
+		Map now;
+		values.add(id);
+		values.add(post_num);
+
+
+
+
+		condition = new StringBuffer("insert into ")
+				.append(Constants.DB_TABLE_FOVORLITE).append("(")
+				.append(Constants.USERINFO_ID).append(",")
+				.append(Constants.POST_NUM).append(") values(?,?)").toString();
+
+		dba.setData(condition, values);
+		return true;
+	}
 
 
 

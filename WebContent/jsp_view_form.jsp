@@ -29,8 +29,15 @@
 	function goUrl(url) {
 		location.href = url;
 	}
+    function Delete()
+    {
+        if(confirm("정말 삭제하시겠습니까?") == true)
+        {
+        	
+        	location.href = 'jsp_Delete.jsp?post_num=<%=post_num%>';
+		}
+	}
 </script>
-
 </head>
 <style>
 <!--
@@ -59,16 +66,7 @@ A:hover {
 }
 -->
 </style>
-<script type="text/javascript">
-    function Delete()
-    {
-        if(confirm("정말 삭제하시겠습니까?") == true)
-        {
-        	
-        	location.href = 'jsp_Delete.jsp?post_num=<%=post_num%>';
-		}
-	}
-</script>
+
 <body topmargin=0 leftmargin=0 text=#464646>
 
 	<center>
@@ -86,24 +84,28 @@ A:hover {
 				<td colspan="9"></td>
 			</tr>
 			<tr>
-			
+
 				<td width=100 align=left>제 목</td>
 				<td align=center colspan="7"><%=row.get(Constants.TITLE)%></td>
-				<td><input type="hidden" name="post_num" value="<%=row.get(Constants.POST_NUM)%>"></td>
+				<td><input type="hidden" name="post_num"
+					value="<%=row.get(Constants.POST_NUM)%>"></td>
 
 			</tr>
 			<tr>
 				<td width=100 colspan="1">작성자</td>
-				<td width=100 colspan="1" align=center><%=row.get(Constants.WRITER)%><input type="button" value="즐겨찾기"></td>
-				
+				<td width=100 colspan="1" align=center><%=row.get(Constants.WRITER)%><input
+					type="button" value="즐겨찾기"
+					onclick="goUrl('jsp_favorite.jsp?writer=<%=row.get(Constants.WRITER)%>&post_num=<%=row.get(Constants.POST_NUM)%>')"></td>
+
 				<td width=100 colspan="1">작성날짜</td>
-				<td width=100 colspan="4" align=center><%=row.get(Constants.REG_DATE).toString().substring(0, 10) %></td>
+				<td width=100 colspan="4" align=center><%=row.get(Constants.REG_DATE).toString().substring(0, 10)%></td>
 				<td width=100 colspan="1">추천수</td>
-				<td width=100 colspan="1" align=center><H4><%=row.get(Constants.POST_LIKE)%></H4><input type="button" value="추천하기"></td>
+				<td width=100 colspan="1" align=center><H4><%=row.get(Constants.POST_LIKE)%></H4>
+					<input type="button" value="추천하기"></td>
 			</tr>
 			<tr>
 				<td width=100>날짜</td>
-				<td colspan="5" align=center><%=row.get(Constants.DATE) %></td>
+				<td colspan="5" align=center><%=row.get(Constants.DATE)%></td>
 				<td width=100 align=center>분 야 : <%=row.get(Constants.CATEGORY)%></td>
 				<td width=200 align=center colspan="2">중요도 : <%=row.get(Constants.POST_IPT)%></td>
 			<tr>
@@ -112,14 +114,32 @@ A:hover {
 			</tr>
 			<tr>
 				<td width=100 align=left>사진</td>
-				<td align=left colspan="8"><img src="<%= row.get(Constants.POST_IMG) %>"
+				<td align=left colspan="8"><img
+					src="<%=row.get(Constants.POST_IMG)%>"
 					class="border border-dark rounded" width="100%" height="100"></td>
 			</tr>
 			<tr>
-				<td colspan=10 align=center><INPUT type=submit value="수정하기" onclick="goUrl('jsp_modify_form.jsp?post_num=<%=post_num %>');">
+				<%session.setAttribute("login", "newlhh");
+				//session.invalidate();
+					if (session.getAttribute("login") != null) {
+						if (session.getAttribute("login").equals(row.get(Constants.WRITER))) {
+							
+						
+				%>
+				<td colspan=10 align=center><INPUT type=submit value="수정하기"
+					onclick="goUrl('jsp_modify_form.jsp?post_num=<%=post_num%>');">
 					&nbsp;&nbsp; <INPUT type=button value="삭제하기" onclick="Delete();">
 					&nbsp;&nbsp; <INPUT type=button value="되돌아가기"
 					onclick="history.back(-1)"></td>
+				<% }
+					} else {
+				%>
+				<td colspan=10 align=center><INPUT type=button value="되돌아가기"
+					onclick="history.back(-1)"></td>
+				<%
+					}
+				%>
+
 			</tr>
 
 			<!-- 입력 부분 끝 -->

@@ -2,26 +2,14 @@
 	import="data.Constants, java.util.*,post.PostClass"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
-
-<%
-	//List<Map> view = new ArrayList<Map>();
-	//WriteClass Write = new WriteClass();
-	//view = Write.viewlist();
-	//Map row;
-%>
 <html>
 <head>
 <!-- Required meta tags -->
-<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <title>게시판</title>
 </head>
 <style>
@@ -55,7 +43,33 @@ A:hover {
 	
 </script>
 <body topmargin=0 leftmargin=0 text=#464646>
-
+<%
+	if(request.getAttribute(Constants.REDIRECTCAUSE) != null){
+		String rc = (String)request.getAttribute(Constants.REDIRECTCAUSE);
+		if(rc.equals("write")) {
+			out.print("<script type='text/javascript'>");
+			out.print("alert('등록되었습니다.'); ");
+			out.print("</script>");
+		} else if(rc.equals("modify")) {
+			out.print("<script type='text/javascript'>");
+			out.print("alert('수정되었습니다.'); ");
+			out.print("</script>");
+		} else if(rc.equals("delete")) {
+			out.print("<script type='text/javascript'>");
+			out.print("alert('삭제되었습니다.'); ");
+			out.print("</script>");
+		} else if(rc.equals("favorite")) {
+			out.print("<script type='text/javascript'>");
+			out.print("alert('즐겨찾기 추가되었습니다.'); ");
+			out.print("</script>");
+		} else if(rc.equals("error")) {
+			out.print("<script type='text/javascript'>");
+			out.print("alert('에러입니다.'); ");
+			out.print("</script>");
+		}
+		
+	}
+%>
 	<center>
 		<table width=580 border=1 cellpadding=2 cellspacing=1>
 			<tr>

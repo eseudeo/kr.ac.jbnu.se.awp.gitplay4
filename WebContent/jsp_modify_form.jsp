@@ -141,7 +141,7 @@ A:hover {
 						value="<%=row.get(Constants.POST_IMG)%>"></td>
 				</tr>
 				<tr>
-					<td colspan=10 align=center><INPUT type=submit value="글 쓰기">
+					<td colspan=10 align=center><INPUT type=submit value="수정하기">
 						&nbsp;&nbsp; <INPUT type=reset value="다시 쓰기"> &nbsp;&nbsp;
 						<INPUT type=button value="되돌아가기" onclick="history.back(-1)">
 					</td>

@@ -23,6 +23,9 @@ public class Constants {
 	public static String POST_HIT = "post_hit";	
 	public static String POST_LIKE_USER = "post_like_user";	
 	
+	//즐겨찾기 관련 CONSTANTS
+	public static String DB_TABLE_FOVORLITE = "favorite";
+	
 	public static String USERINTO_USERNUMBER = "user_num";
 	public static String USERINFO_ID = "id";
 	public static String USERINFO_PASSWORD = "pw";
