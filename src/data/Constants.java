@@ -12,6 +12,7 @@ public class Constants {
 	public static String SERVER_USER = "BigMugari";
 	public static String SERVER_PASSWORD = "eotjd0588@";
 	public static String CURRENTUSER = "currentUser";
+	public static String DATE = "date";
 	public static String JSP_MAINPAGE = "jsp_signIn_form.jsp";
 	public static String JSP_SIGNIN_SUCCESS = "jsp_signIn_success.jsp";
 	public static String JSP_SIGNIN_FORM = "jsp_signIn_form.jsp";
