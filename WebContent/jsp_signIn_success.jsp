@@ -6,8 +6,8 @@
 <%
 	String redirectCause = "";
 	String redirectUrl = Constants.JSP_SIGNIN_FORM;
-	String id,password;
 	SignInClass signIn = new SignInClass();
+	String id,password;
 	id = request.getParameter(UserColumn.ID.toString());
 	password = request.getParameter(UserColumn.PASSWORD.toString());
 	if(isEmpty(id,password)) {
@@ -23,7 +23,7 @@
 	if(signIn.getCurrentUser() != null) {
 		session.setAttribute(Constants.CURRENTUSER, signIn.getCurrentUser());
 		currentUser = (User)session.getAttribute(Constants.CURRENTUSER);
-		out.println( currentUser.getId() + "님 안녕하세요");
+		out.println(currentUser.getId() + "님 안녕하세요");
 	}else {
 		request.setAttribute(Constants.REDIRECTCAUSE, redirectCause);
 		request.getRequestDispatcher(redirectUrl).forward(request, response);

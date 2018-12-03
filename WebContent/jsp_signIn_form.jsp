@@ -1,7 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.Constants"
+<%@ page language="java" contentType="text/html; charset=UTF-8" import = "data.Constants,data.User"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%
+	String redirectUrl = Constants.JSP_SIGNIN_SUCCESS;
+	if(session.getAttribute(Constants.CURRENTUSER) != null){
+		request.getRequestDispatcher(redirectUrl).forward(request, response);
+	}
+%>
 <html>
 <head>
 <meta charset="UTF-8">

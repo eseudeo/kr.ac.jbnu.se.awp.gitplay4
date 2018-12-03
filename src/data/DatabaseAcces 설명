@@ -1,0 +1,20 @@
+String sqlQuery에 query문 작성
+List values에 ? 순서에 맞게 값을 넣어준다.
+values.add(값)
+public boolean setData(String sqlQuery, List values) INSERT,UPDATE,DELETE문  
+public List<Map> getData(String sqlQuery) SELECT문 without WHERE
+public List<Map> getData(String sqlQuery, List values) SELECT문 with WHERE
+
+
+getData 메서드는 Map타입이 인덱스인 리스트를 반환한다.
+이때 각 인덱스(Map)은 SELECT문을 통해 나온 row를 의미한다.
+각 row의 Key 이름은 Column 이름이고 ,Value 는 속성값이다.
+ex) String sqlQuery = "SELECT * FROM User_Management WHERE name = ?"
+    List<Map> resultList = new ArrayList<Map>();
+    List values = new ArrayList();
+    values.add("박대성");
+    resultList = getData(sqlQuery,values);
+    resultList.get(0) //첫번째 row Map [name:"박대성"],[id:"BigMugari"],[pw:"123456"],
+                                       [user_num:1024],[bday:19941002(Date 객체)],[f_list: "아싸임"]
+    resultList.get(1) //두번째 row Map [name:"박대성"],[id:"Mudaeng"],[pw:"654321"],
+                                       [user_num:4],[bday:19501232)Date 객체)],[f_list: "이사람도 아싸임"]
