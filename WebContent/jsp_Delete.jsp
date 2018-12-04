@@ -14,11 +14,11 @@
 <body>
 	<%
 		String post_num = request.getParameter(Constants.POST_NUM);
-		PostClass Write = new PostClass();
+		PostClass Post = new PostClass();
 
 		String redirectCause = "";
 		String redirectUrl = "";
-		if (Write.delete(post_num)) {
+		if (Post.delete(post_num)) {
 			redirectCause = "delete";
 			redirectUrl = "jsp_postList.jsp";
 		} else {

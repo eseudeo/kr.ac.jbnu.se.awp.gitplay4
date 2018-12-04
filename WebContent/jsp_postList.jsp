@@ -90,7 +90,7 @@ A:hover {
 			<tr>
 				<td><%=row.get(Constants.POST_NUM)%></td>
 				<td><a
-					href="jsp_view_form.jsp?post_num=<%=row.get(Constants.POST_NUM)%>"><%=row.get(Constants.TITLE)%></a></td>
+					href="jsp_view.jsp?post_num=<%=row.get(Constants.POST_NUM)%>"><%=row.get(Constants.TITLE)%></a></td>
 				<td><%=row.get(Constants.WRITER)%></td>
 				<td><%=row.get(Constants.REG_DATE)%></td>
 				<td><%=row.get(Constants.CATEGORY)%></td>
@@ -101,7 +101,8 @@ A:hover {
 				%>
 			
 		</table>
+		<a href="jsp_write_form.jsp">작성하기</a>
 	</center>
-	<a href="jsp_write_form.jsp">작성하기</a>
+	
 </body>
 </html>

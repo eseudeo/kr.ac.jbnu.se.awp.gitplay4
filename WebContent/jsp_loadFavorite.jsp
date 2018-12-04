@@ -8,15 +8,22 @@
 </head>
 <body>
 	<%
+		String redirectCause = "";
+		String redirectUrl = "";
+		
 		String writer = request.getParameter("writer");
-		boolean b = true;
+		boolean b = true; // 성공 여부 확인하기 위해
 		String LoginId = "newlhh"; //임시로 아이디 설정함.
+
 		if (request.getParameter("writer") == null) { //작성자 아이디 값이 없는 경우
 			writer = "";
+			redirectCause = "잘못된 접근입니다.";
+			b= false;
 		}
 
-		if (writer.equals("")) { //자기 아이디인 경우
+		if (writer.equals(LoginId)) { //자기 아이디인 경우
 			b = false;
+			redirectCause = "본인의 아이디입니다.";
 		}
 
 		PostClass Post = new PostClass();
@@ -29,26 +36,26 @@
 		for (int i = 0; i < s.length; i++) {
 			if (s[i].equals(writer)) { //이미 즐겨찾기한 경우
 				b = false;
-
+				redirectCause = "이미 즐겨찾기 했습니다.";
 			}
 
 		}
 
 		if (b) {
 			Post.favorite("newlhh", writer); //즐겨찾기에 추가
-			out.println("즐겨찾기 리스트에 추가되었습니다.<p>");
-			view = Post.like_list("newlhh");
+			view = Post.like_list(LoginId);
 			row = view.get(0);
 			s = row.get("f_list").toString().split(",");
-			for (int i = 0; i < s.length; i++) {
-				out.println(
-						i + 1 + ". ID : <a href=\"jsp_view_form.jsp?post_num=" + s[i] + "\">" + s[i] + "</a><p>");
-			}
+			request.setAttribute("f_list", s);
+			redirectCause = "즐겨찾기 리스트에 추가되었습니다.";
+			redirectUrl = "jsp_viewFavorite.jsp";
+
 		} else {
-			out.println("이미 즐겨찾기했거나 잘못된 접근입니다.");
-			out.println("<form method=\"get\" action=\"jsp_postList.jsp\">\r\n" + "<button>뒤로가기</button>\r\n"
-					+ "</form>");
+			redirectUrl = "error.jsp";
+
 		}
+		request.setAttribute("redirectCause", redirectCause);
+		request.getRequestDispatcher(redirectUrl).forward(request, response);
 	%>
 
 

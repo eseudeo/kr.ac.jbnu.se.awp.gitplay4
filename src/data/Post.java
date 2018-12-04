@@ -3,6 +3,8 @@ package data;
 import java.util.Date;
 
 public class Post {
+
+
 	private String title;
 	private String content;
 	private String category;
@@ -14,9 +16,19 @@ public class Post {
 	private String post_like_user;
 	private Date date;
 	
-	public Post(String subject, String content) {
-		this.title = subject;
+	public Post(String title, String content, String category, String post_img, String post_ipt, String post_like,
+			String post_num, String post_hit, String post_like_user, Date date) {
+		super();
+		this.title = title;
 		this.content = content;
+		this.category = category;
+		this.post_img = post_img;
+		this.post_ipt = post_ipt;
+		this.post_like = post_like;
+		this.post_num = post_num;
+		this.post_hit = post_hit;
+		this.post_like_user = post_like_user;
+		this.date = date;
 	}
 
 	public String getTitle() {

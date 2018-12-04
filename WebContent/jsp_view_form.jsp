@@ -4,14 +4,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
-	List<Map> view = new ArrayList<Map>();
-
-	String post_num = request.getParameter(Constants.POST_NUM);
-	PostClass Post = new PostClass();
-	Post.hit(post_num);
-	view = Post.view(post_num);
-	Map row;
-	row = view.get(0);
+	Map row = (Map)request.getAttribute("post");
+	String post_num = request.getParameter("post_num");
 %>
 <html>
 <head>
@@ -96,7 +90,7 @@ A:hover {
 				<td width=100 colspan="1">작성자</td>
 				<td width=100 colspan="1" align=center><%=row.get(Constants.WRITER)%><input
 					type="button" value="즐겨찾기"
-					onclick="goUrl('jsp_fav.jsp?writer=<%=row.get(Constants.WRITER)%>')"></td>
+					onclick="goUrl('jsp_loadFavorite.jsp?writer=<%=row.get(Constants.WRITER)%>')"></td>
 
 				<td width=100 colspan="1">작성날짜</td>
 				<td width=100 colspan="4" align=center><%=row.get(Constants.REG_DATE).toString().substring(0, 10)%></td>
@@ -120,6 +114,8 @@ A:hover {
 					class="border border-dark rounded" width="100%" height="100"></td>
 			</tr>
 			<tr>
+			
+				<!-- 세션 아이디와 글 작성자 아이디를 비교해서 수정 삭제 버튼의 유무를 결정 -->
 				<%
 					session.setAttribute("login", "newlhh");
 					//session.invalidate();
@@ -132,12 +128,12 @@ A:hover {
 					&nbsp;&nbsp; <INPUT type=button value="되돌아가기"
 					onclick="goUrl('jsp_postList.jsp')"></td>
 				<%
-					}
 					} else {
-				%>
-				<td colspan=10 align=center><INPUT type=button value="되돌아가기"
-					onclick="goUrl('jsp_postList.jsp')"></td>
-				<%
+						%>
+						<td colspan=10 align=center><INPUT type=button value="되돌아가기"
+							onclick="goUrl('jsp_postList.jsp')"></td>
+						<%
+					}
 					}
 				%>
 
