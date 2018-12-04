@@ -56,10 +56,10 @@ if(Integer.valueOf(month) < 10) month = "0" + month;
 		if(Write.write(title, writer, Date.valueOf(date), category, content, uploadPath+"/"+post_img, post_ipt)) {
 
 			redirectCause = "write";
-			redirectUrl = "jsp_boardlist.jsp";
+			redirectUrl = "jsp_postList.jsp";
 		}else{
 			redirectCause = "error";
-			redirectUrl = "jsp_boardlist.jsp";
+			redirectUrl = "jsp_postList.jsp";
 		}
 	request.setAttribute(Constants.REDIRECTCAUSE, redirectCause);
 	request.getRequestDispatcher(redirectUrl).forward(request, response);

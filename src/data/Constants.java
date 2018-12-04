@@ -1,5 +1,6 @@
 package data;
 public class Constants {
+	
 	public static String JDBC_DRIVER  = "com.mysql.jdbc.Driver";
 	public static String DB_NAME = "pofo";
 	public static String DB_URL = "jdbc:mysql://localhost:3306/" + DB_NAME + "?serverTimezone=UTC";
@@ -7,6 +8,8 @@ public class Constants {
 	public static String DB_PASSWORD = "1234";
 	public static String DB_TABLE_USER_MANAGEMENT = "user_management";
 	public static String DB_TABLE_USER_PROFILE = "profile";	
+	
+	public static String F_LIST = "f_list";	
 	
 	//게시판 관련 CONSTANTS
 	public static String DB_TABLE_POST = "post";	
@@ -24,7 +27,9 @@ public class Constants {
 	public static String POST_LIKE_USER = "post_like_user";	
 	
 	//즐겨찾기 관련 CONSTANTS
-	public static String DB_TABLE_FOVORLITE = "favorite";
+	public static String DB_TABLE_FAVORITE = "favorite";
+	public static String DB_TABLE_LIKE_LIST = "like_list";
+	
 	
 	public static String USERINTO_USERNUMBER = "user_num";
 	public static String USERINFO_ID = "id";

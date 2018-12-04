@@ -58,7 +58,8 @@ A:hover {
 
 
 		<!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
-		<form action="jsp_modify.jsp" method=post enctype="multipart/form-data">
+		<form action="jsp_modify.jsp" method=post
+			enctype="multipart/form-data">
 
 			<table width=580 border=0 cellpadding=2 cellspacing=1>
 
@@ -76,37 +77,39 @@ A:hover {
 					<td width=100 align=left>제 목</td>
 					<td align=center colspan="5"><INPUT type=text name="title"
 						size="70%" value="<%=row.get(Constants.TITLE)%>"></td>
-						<td><input type="hidden" name="post_num" value="<%=row.get(Constants.POST_NUM)%>"></td>
+					<td><input type="hidden" name="post_num"
+						value="<%=row.get(Constants.POST_NUM)%>"></td>
 				</tr>
 				<tr>
 					<td width=100>날짜</td>
 					<td><select name="selectYear">
 							<%
-								out.println(returnOptionsReverse(2018, 1929, Integer.valueOf(row.get(Constants.DATE).toString().substring(0, 4))));
+								out.println(returnOptionsReverse(2018, 1929,
+										Integer.valueOf(row.get(Constants.DATE).toString().substring(0, 4))));
 							%>
 					</select>년 <select name="selectMonth">
 							<%
 								out.println(returnOptions(1, 12, Integer.valueOf(row.get(Constants.DATE).toString().substring(5, 7))));
 							%>
 					</select>월 <select name="selectDay">
-							<%	
+							<%
 								out.println(returnOptions(1, 31, Integer.valueOf(row.get(Constants.DATE).toString().substring(8, 10))));
 							%>
 					</select>일</td>
 
 					<td width=100 align=center>분 야</td>
 					<td><select name="category">
-							<option value="politics"
-							<%if (row.get(Constants.CATEGORY).equals("politics")) {%>
+							<option value="정치"
+								<%if (row.get(Constants.CATEGORY).equals("politics")) {%>
 								selected="selected" <%}%>>정치</option>
-							<option value="economy"
-							<%if (row.get(Constants.CATEGORY).equals("economy")) {%>
+							<option value="경제"
+								<%if (row.get(Constants.CATEGORY).equals("economy")) {%>
 								selected="selected" <%}%>>경제</option>
-							<option value="society"
-							<%if (row.get(Constants.CATEGORY).equals("society")) {%>
+							<option value="사회"
+								<%if (row.get(Constants.CATEGORY).equals("society")) {%>
 								selected="selected" <%}%>>사회</option>
-							<option value="education"
-							<%if (row.get(Constants.CATEGORY).equals("education")) {%>
+							<option value="교육"
+								<%if (row.get(Constants.CATEGORY).equals("education")) {%>
 								selected="selected" <%}%>>교육</option>
 					</select></td>
 					<td width=100 align=center>중요도</td>
@@ -143,7 +146,7 @@ A:hover {
 				<tr>
 					<td colspan=10 align=center><INPUT type=submit value="수정하기">
 						&nbsp;&nbsp; <INPUT type=reset value="다시 쓰기"> &nbsp;&nbsp;
-						<INPUT type=button value="되돌아가기" onclick="history.back(-1)">
+						<INPUT type=button value="되돌아가기" onclick="goUrl('jsp_postList.jsp')">
 					</td>
 				</tr>
 
@@ -176,7 +179,7 @@ A:hover {
 			}
 			count.append("<option value=" + (endNum) + ">" + (endNum) + "</option>\n");
 		}
-			
+
 		while (endNum-- >= startNum);
 		return count.toString();
 	}%>

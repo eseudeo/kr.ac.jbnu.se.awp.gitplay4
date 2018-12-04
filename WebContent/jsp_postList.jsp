@@ -43,33 +43,32 @@ A:hover {
 	
 </script>
 <body topmargin=0 leftmargin=0 text=#464646>
-<%
-	if(request.getAttribute(Constants.REDIRECTCAUSE) != null){
-		String rc = (String)request.getAttribute(Constants.REDIRECTCAUSE);
-		if(rc.equals("write")) {
-			out.print("<script type='text/javascript'>");
-			out.print("alert('등록되었습니다.'); ");
-			out.print("</script>");
-		} else if(rc.equals("modify")) {
-			out.print("<script type='text/javascript'>");
-			out.print("alert('수정되었습니다.'); ");
-			out.print("</script>");
-		} else if(rc.equals("delete")) {
-			out.print("<script type='text/javascript'>");
-			out.print("alert('삭제되었습니다.'); ");
-			out.print("</script>");
-		} else if(rc.equals("favorite")) {
-			out.print("<script type='text/javascript'>");
-			out.print("alert('즐겨찾기 추가되었습니다.'); ");
-			out.print("</script>");
-		} else if(rc.equals("error")) {
-			out.print("<script type='text/javascript'>");
-			out.print("alert('에러입니다.'); ");
-			out.print("</script>");
+	<%
+		if (request.getAttribute(Constants.REDIRECTCAUSE) != null) {
+			String rc = (String) request.getAttribute(Constants.REDIRECTCAUSE);
+			if (rc.equals("write")) {
+				out.print("<script type='text/javascript'>");
+				out.print("alert('등록되었습니다.'); ");
+				out.print("</script>");
+			} else if (rc.equals("modify")) {
+				out.print("<script type='text/javascript'>");
+				out.print("alert('수정되었습니다.'); ");
+				out.print("</script>");
+			} else if (rc.equals("delete")) {
+				out.print("<script type='text/javascript'>");
+				out.print("alert('삭제되었습니다.'); ");
+				out.print("</script>");
+			} else if (rc.equals("favorite")) {
+				out.print("<script type='text/javascript'>");
+				out.print("alert('즐겨찾기 추가되었습니다.'); ");
+				out.print("</script>");
+			} else if (rc.equals("error")) {
+				out.print("<script type='text/javascript'>");
+				out.print("alert('에러입니다.'); ");
+				out.print("</script>");
+			} 
 		}
-		
-	}
-%>
+	%>
 	<center>
 		<table width=580 border=1 cellpadding=2 cellspacing=1>
 			<tr>
@@ -97,12 +96,12 @@ A:hover {
 				<td><%=row.get(Constants.CATEGORY)%></td>
 				<td><%=row.get(Constants.POST_LIKE)%></td>
 				<td><%=row.get(Constants.POST_HIT)%></td>
-			<%
-				}
-			%>
-
-
+				<%
+					}
+				%>
+			
 		</table>
 	</center>
+	<a href="jsp_write_form.jsp">작성하기</a>
 </body>
 </html>

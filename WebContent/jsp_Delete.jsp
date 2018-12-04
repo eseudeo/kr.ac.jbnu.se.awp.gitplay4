@@ -15,19 +15,19 @@
 	<%
 		String post_num = request.getParameter(Constants.POST_NUM);
 		PostClass Write = new PostClass();
-		
+
 		String redirectCause = "";
 		String redirectUrl = "";
 		if (Write.delete(post_num)) {
 			redirectCause = "delete";
 			redirectUrl = "jsp_postList.jsp";
-		}else{
+		} else {
 			redirectCause = "error";
 			redirectUrl = "jsp_postList.jsp";
 		}
 		request.setAttribute(Constants.REDIRECTCAUSE, redirectCause);
 		request.getRequestDispatcher(redirectUrl).forward(request, response);
-			%>
+	%>
 
 
 

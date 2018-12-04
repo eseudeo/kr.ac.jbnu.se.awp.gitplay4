@@ -7,8 +7,9 @@
 	List<Map> view = new ArrayList<Map>();
 
 	String post_num = request.getParameter(Constants.POST_NUM);
-	PostClass Write = new PostClass();
-	view = Write.view(post_num);
+	PostClass Post = new PostClass();
+	Post.hit(post_num);
+	view = Post.view(post_num);
 	Map row;
 	row = view.get(0);
 %>
@@ -95,7 +96,7 @@ A:hover {
 				<td width=100 colspan="1">작성자</td>
 				<td width=100 colspan="1" align=center><%=row.get(Constants.WRITER)%><input
 					type="button" value="즐겨찾기"
-					onclick="goUrl('jsp_favorite.jsp?writer=<%=row.get(Constants.WRITER)%>&post_num=<%=row.get(Constants.POST_NUM)%>')"></td>
+					onclick="goUrl('jsp_fav.jsp?writer=<%=row.get(Constants.WRITER)%>')"></td>
 
 				<td width=100 colspan="1">작성날짜</td>
 				<td width=100 colspan="4" align=center><%=row.get(Constants.REG_DATE).toString().substring(0, 10)%></td>
@@ -119,23 +120,23 @@ A:hover {
 					class="border border-dark rounded" width="100%" height="100"></td>
 			</tr>
 			<tr>
-				<%session.setAttribute("login", "newlhh");
-				//session.invalidate();
+				<%
+					session.setAttribute("login", "newlhh");
+					//session.invalidate();
 					if (session.getAttribute("login") != null) {
 						if (session.getAttribute("login").equals(row.get(Constants.WRITER))) {
-							
-						
 				%>
 				<td colspan=10 align=center><INPUT type=submit value="수정하기"
 					onclick="goUrl('jsp_modify_form.jsp?post_num=<%=post_num%>');">
 					&nbsp;&nbsp; <INPUT type=button value="삭제하기" onclick="Delete();">
 					&nbsp;&nbsp; <INPUT type=button value="되돌아가기"
-					onclick="history.back(-1)"></td>
-				<% }
+					onclick="goUrl('jsp_postList.jsp')"></td>
+				<%
+					}
 					} else {
 				%>
 				<td colspan=10 align=center><INPUT type=button value="되돌아가기"
-					onclick="history.back(-1)"></td>
+					onclick="goUrl('jsp_postList.jsp')"></td>
 				<%
 					}
 				%>
