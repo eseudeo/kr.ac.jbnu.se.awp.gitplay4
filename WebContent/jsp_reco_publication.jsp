@@ -3,12 +3,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
 	RecommendedPublication rePublication = new RecommendedPublication();
+	int i = 0;
 	Category[] categories = Category.values();
 	String category;
-	if(request.getParameter("selectCategory") == null)
+	if(session.getAttribute("selectCategory") == null)
 		category = categories[0].toString();
-	else
-		category = request.getParameter("selectCategory");
+	else{
+		category = session.getAttribute("selectCategory").toString();
+		session.removeAttribute("selectCategory");
+	}
 	List<Map> publications = rePublication.getPublications(category, 3);
 %>
 <html>
@@ -26,9 +29,8 @@
 <select name = selectCategory>
 <%
 		StringBuffer count = new StringBuffer();
-		int i = 0;
 		do count.append("<option value=" + (categories[i].toString()) + ">" + (categories[i].toString()) + "</option>\n");		
-		while(i++ <= categories.length);
+		while(i++ < categories.length - 1);
 		out.println(count);
 %>
 </select>
@@ -37,10 +39,12 @@
 	int indexNum = 0;
 	while(indexNum < publications.size()){
 		Map index = publications.get(indexNum++);
+		String content = index.get(PostColumn.CONTENT.toString()).toString();
+		int length = ((content.length() > 20) ? 15 : content.length());
 		out.println("<tr>" + 
-					"<td>" + index.get(PostColumn.POST_IMG).toString() + "</td>" +
-					"<td><a href=jsp_reco_publication_category.jsp?post_num=" + index.get(PostColumn.POST_NUM) + ">" + index.get(PostColumn.TITLE) + "</a></td>" + 
-					"<td>" + index.get(PostColumn.CONTENT).toString().substring(0, 15) + "</td>");
+					"<td>" + index.get(PostColumn.POST_IMG.toString()).toString() + "</td>" +
+					"<td><a href=jsp_reco_publication_category.jsp?post_num=" + index.get(PostColumn.POST_NUM.toString()) + ">" + index.get(PostColumn.TITLE.toString()) + "</a></td>" + 
+					"<td>" + index.get(PostColumn.CONTENT.toString()).toString().substring(0, length ) + "</td>");
 	}
 %>
 <input type="submit" value="더보기">
