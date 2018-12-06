@@ -3,6 +3,8 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%
+String userId = (String)request.getAttribute("userId"); %>
 <head>
 <!-- Required meta tags -->
 <meta name="viewport"
@@ -71,6 +73,7 @@ A:hover {
 	%>
 	<center>
 		<table width=580 border=1 cellpadding=2 cellspacing=1>
+			<tr><td colspan="7" align="center"><H1><%=userId %>님의 게시판</H1></td></tr>
 			<tr>
 				<td>글번호</td>
 				<td>글제목</td>
@@ -83,7 +86,7 @@ A:hover {
 			<%
 				PostClass Post = new PostClass();
 				List<Map> view = new ArrayList<Map>();
-				view = Post.postCount();
+				view = Post.postList(userId);
 				for (int i = 0; i < view.size(); i++) {
 					Map row = view.get(i);
 			%>
@@ -102,6 +105,8 @@ A:hover {
 			
 		</table>
 		<a href="jsp_write_form.jsp">작성하기</a>
+		<INPUT type=button value="되돌아가기"
+							onclick='history.back(-1); return false;'>
 	</center>
 	
 </body>

@@ -5,6 +5,8 @@
 
 <%
 	Map row = (Map)request.getAttribute("post");
+
+	
 	String post_num = request.getParameter("post_num");
 %>
 <html>
@@ -90,7 +92,7 @@ A:hover {
 				<td width=100 colspan="1">작성자</td>
 				<td width=100 colspan="1" align=center><%=row.get(Constants.WRITERID)%><input
 					type="button" value="즐겨찾기"
-					onclick="goUrl('jsp_loadFavorite.jsp?writer=<%=row.get(Constants.WRITERID)%>')"></td>
+					onclick="goUrl('jsp_loadFavorite.jsp?writerId=<%=row.get(Constants.WRITERID)%>')"></td>
 
 				<td width=100 colspan="1">작성날짜</td>
 				<td width=100 colspan="4" align=center><%=row.get(Constants.REG_DATE).toString().substring(0, 10)%></td>
@@ -126,12 +128,12 @@ A:hover {
 					onclick="goUrl('jsp_modify_form.jsp?post_num=<%=post_num%>');">
 					&nbsp;&nbsp; <INPUT type=button value="삭제하기" onclick="Delete();">
 					&nbsp;&nbsp; <INPUT type=button value="되돌아가기"
-					onclick="goUrl('jsp_postList.jsp')"></td>
+					onclick='history.back(-1); return false;'></td>
 				<%
 					} else {
 						%>
 						<td colspan=10 align=center><INPUT type=button value="되돌아가기"
-							onclick="goUrl('jsp_postList.jsp')"></td>
+							onclick='history.back(-1); return false;'></td>
 						<%
 					}
 					}

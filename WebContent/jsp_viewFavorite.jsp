@@ -15,10 +15,22 @@
 		out.print("<script type='text/javascript'>");
 		out.print("alert('" + msg + "');");
 		out.print("</script>");
-		for (int i = 0; i < s.length; i++) {
-			out.println(i + 1 + ". ID : <a href=\"jsp_view_form.jsp?post_num=" + s[i] + "\">" + s[i] + "</a><p>");
+		int num;
+		for (int i = 1; i < s.length; i++) {
+			if(s[i].isEmpty()) {
+				continue;
+			}
+				
+			
+			out.println(i + ". ID : <a href=\"jsp_view_form.jsp?post_num=" + s[i] + "\">" + s[i] + "</a><p>");
 		}
+		
+		
+		
 		//request.setAttribute("f_list", null);
 	%>
+	
+	<INPUT type=button value="되돌아가기"
+							onclick='history.back(-1); return false;'>
 </body>
 </html>

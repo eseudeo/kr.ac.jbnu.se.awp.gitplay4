@@ -114,14 +114,25 @@ public class PostClass {
 	}
 
 	//게시판 글 목록 -> 글번호 역순
-	public List<Map> postCount() {
+	public List<Map> postList(String LoginId) {
 		List values = new ArrayList();
+		values.add(LoginId);
+		
 		String condition = new StringBuffer("select * from ")
-				.append(Constants.DB_TABLE_POST).append(" order by ").append(Constants.POST_NUM).append(" DESC").toString();
+				.append(Constants.DB_TABLE_POST).append(" where WriterId = ?").append(" order by ").append(Constants.POST_NUM).append(" DESC").toString();
 		return dba.getData(condition,values);
 	}
 	
-	public List<Map> like_list(String id) {
+	//유저 목록
+	public List<Map> userList() {
+		List values = new ArrayList();
+		
+		String condition = new StringBuffer("select id from ")
+				.append(Constants.DB_TABLE_USER_MANAGEMENT).toString();
+		return dba.getData(condition,values);
+	}
+	
+	public List<Map> getFavoriteList(String id) {
 		List values = new ArrayList();
 		
 		values.add(id);
@@ -141,7 +152,7 @@ public class PostClass {
 		return dba.getData(condition,values);
 	}
 	
-	public boolean favorite(String id, String writerId) {
+	public boolean addFavorite(String id, String writerId) {
 		List value = new ArrayList();
 		List values = new ArrayList();
 		List userList = new ArrayList();
@@ -150,7 +161,7 @@ public class PostClass {
 		Map now;
 		
 		String s = new StringBuffer(",").append(writerId).toString();
-		
+		//String s2 = new StringBuffer(writerId).toString();
 		values.add(s);
 		values.add(id);
 
@@ -158,7 +169,7 @@ public class PostClass {
 
 		condition = new StringBuffer("update ")
 				.append(Constants.DB_TABLE_USER_MANAGEMENT).append(" set ")
-				.append(Constants.F_LIST).append(" = CONCAT( ").append(Constants.F_LIST).append(", ? )")
+				.append(Constants.F_LIST).append(" = CONCAT( ifnull(").append(Constants.F_LIST).append(", '') , ? )")
 				.append(" where ").append(Constants.USERINFO_ID).append(" = ").append(" ? ").toString();
 		
 		//UPDATE favorite SET like_list = CONCAT( like_list, ', 38' ) WHERE id = 'newlhh';

@@ -52,10 +52,10 @@
 	if (Write.modify(title, writerId, Date.valueOf(date), category, content, uploadPath + "/" + post_img,
 			post_ipt, post_num)) {
 		redirectCause = "modify";
-		redirectUrl = "jsp_postList.jsp";
+		redirectUrl = "jsp_view.jsp?post_num=" + request.getParameter("post_num") ;
 	} else {
 		redirectCause = "error";
-		redirectUrl = "jsp_postList.jsp";
+		redirectUrl = "error.jsp";
 	}
 	request.setAttribute(Constants.REDIRECTCAUSE, redirectCause);
 	request.getRequestDispatcher(redirectUrl).forward(request, response);

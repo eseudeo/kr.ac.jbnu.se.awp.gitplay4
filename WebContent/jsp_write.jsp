@@ -57,6 +57,7 @@ if(Integer.valueOf(month) < 10) month = "0" + month;
 
 			redirectCause = "write";
 			redirectUrl = "jsp_postList.jsp";
+			request.setAttribute("userId", writer);
 		}else{
 			redirectCause = "error";
 			redirectUrl = "jsp_postList.jsp";

@@ -58,7 +58,7 @@ A:hover {
 
 
 		<!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
-		<form action="jsp_modify.jsp?post_num=<%=post_num %>" method=post
+		<form action="jsp_modify.jsp?post_num=<%=post_num%>" method=post
 			enctype="multipart/form-data">
 
 			<table width=580 border=0 cellpadding=2 cellspacing=1>
@@ -146,8 +146,8 @@ A:hover {
 				<tr>
 					<td colspan=10 align=center><INPUT type=submit value="수정하기">
 						&nbsp;&nbsp; <INPUT type=reset value="다시 쓰기"> &nbsp;&nbsp;
-						<INPUT type=button value="되돌아가기" onclick="goUrl('jsp_postList.jsp')">
-					</td>
+						<INPUT type=button value="되돌아가기"
+						onclick='history.back(-1); return false;'></td>
 				</tr>
 
 				<!-- 입력 부분 끝 -->

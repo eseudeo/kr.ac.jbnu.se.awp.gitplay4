@@ -21,9 +21,10 @@
 		if (Post.delete(post_num)) {
 			redirectCause = "delete";
 			redirectUrl = "jsp_postList.jsp";
+			request.setAttribute("userId", "newlhh");
 		} else {
 			redirectCause = "error";
-			redirectUrl = "jsp_postList.jsp";
+			redirectUrl = "error.jsp";
 		}
 		request.setAttribute(Constants.REDIRECTCAUSE, redirectCause);
 		request.getRequestDispatcher(redirectUrl).forward(request, response);

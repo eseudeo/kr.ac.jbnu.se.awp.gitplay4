@@ -29,7 +29,7 @@
 		PostClass Post = new PostClass();
 		List<Map> view = new ArrayList<Map>();
 
-		view = Post.like_list(LoginId); //즐겨찾기 목록을 가져옴
+		view = Post.getFavoriteList(LoginId); //즐겨찾기 목록을 가져옴
 		Map row = view.get(0);
 		String[] s = row.get("f_list").toString().split(",");
 
@@ -42,8 +42,8 @@
 		}
 
 		if (b) {
-			Post.favorite("newlhh", writerId); //즐겨찾기에 추가
-			view = Post.like_list(LoginId);
+			Post.addFavorite("newlhh", writerId); //즐겨찾기에 추가
+			view = Post.getFavoriteList(LoginId);
 			row = view.get(0);
 			s = row.get("f_list").toString().split(",");
 			request.setAttribute("f_list", s);
@@ -52,6 +52,7 @@
 
 		} else {
 			redirectUrl = "error.jsp";
+			
 
 		}
 		request.setAttribute("redirectCause", redirectCause);
