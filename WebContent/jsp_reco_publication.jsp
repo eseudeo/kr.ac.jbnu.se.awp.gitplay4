@@ -6,35 +6,32 @@
 	int i = 0;
 	Category[] categories = Category.values();
 	String category;
-	if(session.getAttribute("selectCategory") == null)
+	if(request.getParameter(Constants.CATEGORY) == null)
 		category = categories[0].toString();
 	else{
-		category = session.getAttribute("selectCategory").toString();
-		session.removeAttribute("selectCategory");
+		category = request.getParameter(Constants.CATEGORY).toString();
 	}
 	List<Map> publications = rePublication.getPublications(category, 3);
 %>
 <html>
 <head>
-<script type="text/javascript">
-	function reload() {
-		location.reload();
-	}
-</script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 <form name=category method=post action=jsp_reco_publication_category.jsp>
-<select name = selectCategory>
+	<input name=<%=Constants.CATEGORY %> type=hidden value=<%=category %> />
 <%
-		StringBuffer count = new StringBuffer();
-		do count.append("<option value=" + (categories[i].toString()) + ">" + (categories[i].toString()) + "</option>\n");		
-		while(i++ < categories.length - 1);
-		out.println(count);
+		while(i < categories.length){
 %>
-</select>
-<input type="button" value="선택" onClick="reload()">
+			<input type = "button" name=<%=categories[i].toString() %>  value=<%=categories[i++].toString() %> onClick="reload(this.value)"/>
+<%			
+		}
+%>
+	<input type="submit" value="더보기">
+</form></body>
+</html>
 <% 	
 	int indexNum = 0;
 	while(indexNum < publications.size()){
@@ -47,6 +44,10 @@
 					"<td>" + index.get(PostColumn.CONTENT.toString()).toString().substring(0, length ) + "</td>");
 	}
 %>
-<input type="submit" value="더보기">
-</form></body>
-</html>
+<script>
+		function reload(x) {
+			var target = x;
+			var url = 'jsp_reco_publication.jsp?selected=' + target;
+			window.location.href = url;
+		}
+</script>

@@ -19,5 +19,6 @@ public class Constants {
 	public static String JSP_SIGNUP_FORM = "jsp_signUp_form.jsp";
 	public static String JSP_RECOMMENDED_CATEGORY = "jsp_reco_publication_category";
 	public static String REDIRECTCAUSE = "redirectCause";
+	public static String CATEGORY = "selected";
 	
 }
