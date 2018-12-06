@@ -91,7 +91,7 @@ A:hover {
 				<td><%=row.get(Constants.POST_NUM)%></td>
 				<td><a
 					href="jsp_view.jsp?post_num=<%=row.get(Constants.POST_NUM)%>"><%=row.get(Constants.TITLE)%></a></td>
-				<td><%=row.get(Constants.WRITER)%></td>
+				<td><%=row.get(Constants.WRITERID)%></td>
 				<td><%=row.get(Constants.REG_DATE)%></td>
 				<td><%=row.get(Constants.CATEGORY)%></td>
 				<td><%=row.get(Constants.POST_LIKE)%></td>

@@ -39,11 +39,11 @@ new DefaultFileRenamePolicy());
 	String month = multi.getParameter("selectMonth");
 	String day = multi.getParameter("selectDay");
 	String date;
-	String title, category, content, post_ipt;
+	String title, category, content;
 	title = multi.getParameter(Constants.TITLE);
 	category = multi.getParameter(Constants.CATEGORY);
 	content = multi.getParameter(Constants.CONTENT);
-	post_ipt = multi.getParameter(Constants.POST_IPT);
+	int post_ipt = Integer.parseInt(multi.getParameter(Constants.POST_IPT));
 	
 if(Integer.valueOf(month) < 10) month = "0" + month;
 	if(Integer.valueOf(day) < 10) day = "0" + day;

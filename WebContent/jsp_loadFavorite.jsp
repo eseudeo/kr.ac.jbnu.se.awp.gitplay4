@@ -11,17 +11,17 @@
 		String redirectCause = "";
 		String redirectUrl = "";
 		
-		String writer = request.getParameter("writer");
+		String writerId = request.getParameter("writerId");
 		boolean b = true; // 성공 여부 확인하기 위해
 		String LoginId = "newlhh"; //임시로 아이디 설정함.
 
-		if (request.getParameter("writer") == null) { //작성자 아이디 값이 없는 경우
-			writer = "";
+		if (request.getParameter("writerId") == null) { //작성자 아이디 값이 없는 경우
+			writerId = "";
 			redirectCause = "잘못된 접근입니다.";
 			b= false;
 		}
 
-		if (writer.equals(LoginId)) { //자기 아이디인 경우
+		if (writerId.equals(LoginId)) { //자기 아이디인 경우
 			b = false;
 			redirectCause = "본인의 아이디입니다.";
 		}
@@ -34,7 +34,7 @@
 		String[] s = row.get("f_list").toString().split(",");
 
 		for (int i = 0; i < s.length; i++) {
-			if (s[i].equals(writer)) { //이미 즐겨찾기한 경우
+			if (s[i].equals(writerId)) { //이미 즐겨찾기한 경우
 				b = false;
 				redirectCause = "이미 즐겨찾기 했습니다.";
 			}
@@ -42,7 +42,7 @@
 		}
 
 		if (b) {
-			Post.favorite("newlhh", writer); //즐겨찾기에 추가
+			Post.favorite("newlhh", writerId); //즐겨찾기에 추가
 			view = Post.like_list(LoginId);
 			row = view.get(0);
 			s = row.get("f_list").toString().split(",");

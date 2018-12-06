@@ -9,15 +9,15 @@ public class Post {
 	private String content;
 	private String category;
 	private String post_img;
-	private String post_ipt;
+	private int post_ipt;
 	private String post_like;
-	private String post_num;
-	private String post_hit;
+	private int post_num;
+	private int post_hit;
 	private String post_like_user;
 	private Date date;
 	
-	public Post(String title, String content, String category, String post_img, String post_ipt, String post_like,
-			String post_num, String post_hit, String post_like_user, Date date) {
+	public Post(String title, String content, String category, String post_img, int post_ipt, String post_like,
+			int post_num, int post_hit, String post_like_user, Date date) {
 		super();
 		this.title = title;
 		this.content = content;
@@ -60,11 +60,11 @@ public class Post {
 		this.post_img = post_img;
 	}
 
-	public String getPost_ipt() {
+	public int getPost_ipt() {
 		return post_ipt;
 	}
 
-	public void setPost_ipt(String post_ipt) {
+	public void setPost_ipt(int post_ipt) {
 		this.post_ipt = post_ipt;
 	}
 
@@ -76,19 +76,19 @@ public class Post {
 		this.post_like = post_like;
 	}
 
-	public String getPost_num() {
+	public int getPost_num() {
 		return post_num;
 	}
 
-	public void setPost_num(String post_num) {
+	public void setPost_num(int post_num) {
 		this.post_num = post_num;
 	}
 
-	public String getPost_hit() {
+	public int getPost_hit() {
 		return post_hit;
 	}
 
-	public void setPost_hit(String post_hit) {
+	public void setPost_hit(int post_hit) {
 		this.post_hit = post_hit;
 	}
 

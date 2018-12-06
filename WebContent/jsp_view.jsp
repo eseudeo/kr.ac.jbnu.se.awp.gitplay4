@@ -6,7 +6,7 @@
 <%
 	List<Map> view = new ArrayList<Map>();
 
-	String post_num = request.getParameter(Constants.POST_NUM);
+	int post_num = Integer.parseInt(request.getParameter(Constants.POST_NUM));
 	PostClass Post = new PostClass();
 	Post.hit(post_num);
 	view = Post.view(post_num);

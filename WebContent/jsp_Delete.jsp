@@ -13,7 +13,7 @@
 </script>
 <body>
 	<%
-		String post_num = request.getParameter(Constants.POST_NUM);
+		int post_num = Integer.parseInt(request.getParameter(Constants.POST_NUM));
 		PostClass Post = new PostClass();
 
 		String redirectCause = "";

@@ -88,9 +88,9 @@ A:hover {
 			</tr>
 			<tr>
 				<td width=100 colspan="1">작성자</td>
-				<td width=100 colspan="1" align=center><%=row.get(Constants.WRITER)%><input
+				<td width=100 colspan="1" align=center><%=row.get(Constants.WRITERID)%><input
 					type="button" value="즐겨찾기"
-					onclick="goUrl('jsp_loadFavorite.jsp?writer=<%=row.get(Constants.WRITER)%>')"></td>
+					onclick="goUrl('jsp_loadFavorite.jsp?writer=<%=row.get(Constants.WRITERID)%>')"></td>
 
 				<td width=100 colspan="1">작성날짜</td>
 				<td width=100 colspan="4" align=center><%=row.get(Constants.REG_DATE).toString().substring(0, 10)%></td>
@@ -120,7 +120,7 @@ A:hover {
 					session.setAttribute("login", "newlhh");
 					//session.invalidate();
 					if (session.getAttribute("login") != null) {
-						if (session.getAttribute("login").equals(row.get(Constants.WRITER))) {
+						if (session.getAttribute("login").equals(row.get(Constants.WRITERID))) {
 				%>
 				<td colspan=10 align=center><INPUT type=submit value="수정하기"
 					onclick="goUrl('jsp_modify_form.jsp?post_num=<%=post_num%>');">

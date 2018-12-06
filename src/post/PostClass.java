@@ -16,7 +16,7 @@ public class PostClass {
 	}
 
 	//게시판 글 등록
-	public boolean write(String title, String writer, Date date, String category, String content, String post_img, String post_ipt) {
+	public boolean write(String title, String id, Date date, String category, String content, String post_img, int post_ipt) {
 		List value = new ArrayList();
 		List values = new ArrayList();
 		List userList = new ArrayList();
@@ -24,7 +24,7 @@ public class PostClass {
 		String result = "";
 		Map now;
 		values.add(title);
-		values.add(writer);
+		values.add(id);
 		values.add(date);
 		values.add(category);
 		values.add(content);
@@ -37,7 +37,7 @@ public class PostClass {
 		condition = new StringBuffer("insert into ")
 				.append(Constants.DB_TABLE_POST).append("(")
 				.append(Constants.TITLE).append(",")
-				.append(Constants.WRITER).append(",")
+				.append(Constants.WRITERID).append(",")
 				.append(Constants.DATE).append(",")
 				.append(Constants.CATEGORY).append(",")
 				.append(Constants.CONTENT).append(",")
@@ -48,7 +48,7 @@ public class PostClass {
 		return true;
 	}
 	
-	public boolean modify(String title, String writer, Date date, String category, String content, String post_img, String post_ipt, String post_num) {
+	public boolean modify(String title, String id, Date date, String category, String content, String post_img, int post_ipt, int post_num) {
 		List value = new ArrayList();
 		List values = new ArrayList();
 		List userList = new ArrayList();
@@ -56,7 +56,7 @@ public class PostClass {
 		String result = "";
 		Map now;
 		values.add(title);
-		values.add(writer);
+		values.add(id);
 		values.add(date);
 		values.add(category);
 		values.add(content);
@@ -70,7 +70,7 @@ public class PostClass {
 		condition = new StringBuffer("update ")
 				.append(Constants.DB_TABLE_POST).append(" set ")
 				.append(Constants.TITLE).append(" = ").append("?, ")
-				.append(Constants.WRITER).append(" = ").append("?, ")
+				.append(Constants.WRITERID).append(" = ").append("?, ")
 				.append(Constants.DATE).append(" = ").append("?, ")
 				.append(Constants.CATEGORY).append(" = ").append("?, ")
 				.append(Constants.CONTENT).append(" = ").append("?, ")
@@ -83,7 +83,7 @@ public class PostClass {
 	}
 
 	//게시판 글 보기
-	public List<Map> view(String post_num) {
+	public List<Map> view(int post_num) {
 		List values = new ArrayList();
 		String condition = new StringBuffer("select * from ")
 				.append(Constants.DB_TABLE_POST).append(" where ")
@@ -93,7 +93,7 @@ public class PostClass {
 	}
 
 	//게시판 글 삭제
-	public boolean delete(String post_num) {
+	public boolean delete(int post_num) {
 		List value = new ArrayList();
 		List values = new ArrayList();
 		List userList = new ArrayList();
@@ -133,7 +133,7 @@ public class PostClass {
 	
 
 	//date를 불러오는 메소드 - 안쓰임
-	public List<Map> getDate(String Post_num) {
+	public List<Map> getDate(int Post_num) {
 		List values = new ArrayList();
 		String condition = new StringBuffer("select from_unixtime(unix_timestamp(")
 				.append(Constants.DATE).append(", '%Y-%m-%d' ) FROM '")
@@ -141,7 +141,7 @@ public class PostClass {
 		return dba.getData(condition,values);
 	}
 	
-	public boolean favorite(String id, String writer) {
+	public boolean favorite(String id, String writerId) {
 		List value = new ArrayList();
 		List values = new ArrayList();
 		List userList = new ArrayList();
@@ -149,7 +149,7 @@ public class PostClass {
 		String result = "";
 		Map now;
 		
-		String s = new StringBuffer(",").append(writer).toString();
+		String s = new StringBuffer(",").append(writerId).toString();
 		
 		values.add(s);
 		values.add(id);
@@ -167,7 +167,7 @@ public class PostClass {
 		return true;
 	}
 	
-	public boolean hit(String post_num) {
+	public boolean hit(int post_num) {
 		List value = new ArrayList();
 		List values = new ArrayList();
 		List userList = new ArrayList();

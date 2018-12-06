@@ -6,7 +6,7 @@
 <%
 	List<Map> view = new ArrayList<Map>();
 
-	String post_num = request.getParameter(Constants.POST_NUM);
+	int post_num = Integer.parseInt(request.getParameter(Constants.POST_NUM));
 	PostClass Write = new PostClass();
 	view = Write.view(post_num);
 	Map row;
@@ -58,7 +58,7 @@ A:hover {
 
 
 		<!-- 입력된 값을 다음 페이지로 넘기기 위해 FORM을 만든다. -->
-		<form action="jsp_modify.jsp" method=post
+		<form action="jsp_modify.jsp?post_num=<%=post_num %>" method=post
 			enctype="multipart/form-data">
 
 			<table width=580 border=0 cellpadding=2 cellspacing=1>

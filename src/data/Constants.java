@@ -14,7 +14,7 @@ public class Constants {
 	//게시판 관련 CONSTANTS
 	public static String DB_TABLE_POST = "post";	
 	public static String TITLE = "title";	
-	public static String WRITER = "writer";
+	public static String WRITERID = "writerId";
 	public static String REG_DATE = "reg_date";	
 	public static String DATE = "date";	
 	public static String CATEGORY = "category";	

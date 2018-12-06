@@ -18,7 +18,7 @@
 		for (int i = 0; i < s.length; i++) {
 			out.println(i + 1 + ". ID : <a href=\"jsp_view_form.jsp?post_num=" + s[i] + "\">" + s[i] + "</a><p>");
 		}
-		request.setAttribute("f_list", null);
+		//request.setAttribute("f_list", null);
 	%>
 </body>
 </html>
