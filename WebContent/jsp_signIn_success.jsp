@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" import = "sign.SignInClass,data.Constants,data.User"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="currentUser" class="data.User" scope="page" />
+<jsp:useBean id="currentUser" class="data.User" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <% request.setCharacterEncoding("utf-8"); %>
 <%
@@ -19,7 +19,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%
+<% 
 	if(signIn.getCurrentUser() != null) {
 		session.setAttribute(Constants.CURRENTUSER, signIn.getCurrentUser());
 		currentUser = (User)session.getAttribute(Constants.CURRENTUSER);
@@ -34,6 +34,9 @@
 <body>
 <form name=signOut method=post action=jsp_signOut.jsp>
 <input type="submit" value="로그아웃" onclick="alert('로그아웃했습니다');" />
+</form>
+<form name=signOut method=post action=post/getList_test.jsp>
+<input type="submit" value="들어가기" />
 </form>
 </body>
 </html>
